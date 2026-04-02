@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarkZen – Hiro Studio</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+      background: #f7f8fa;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: #1a1a2e;
+      padding: 14px 24px;
+    }
+    nav a {
+      color: #b0b8d0;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    nav a:hover { color: #fff; }
+    nav a::before { content: "← "; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .hero-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .hero .tagline {
+      font-size: 1.05rem;
+      color: #b0b8d0;
+      margin-bottom: 28px;
+    }
+    .btn-store {
+      display: inline-block;
+      background: #6c63ff;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .btn-store:hover { background: #574fd6; }
+
+    /* ── Main ── */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 16px 80px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      margin-bottom: 24px;
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    /* ── Features ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .feature {
+      background: #f4f5ff;
+      border-radius: 12px;
+      padding: 18px 16px;
+    }
+    .feature .icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .feature h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .feature p { font-size: 0.85rem; color: #555; line-height: 1.5; }
+
+    /* ── Description ── */
+    .card p {
+      font-size: 0.97rem;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    .card p:last-child { margin-bottom: 0; }
+
+    /* ── Legal ── */
+    .legal-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .legal-links a {
+      color: #6c63ff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: 2px solid #6c63ff;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .legal-links a:hover {
+      background: #6c63ff;
+      color: #fff;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #999;
+      font-size: 0.85rem;
+    }
+    footer a { color: #6c63ff; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../../">Hiro Studio</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-icon">✍️</div>
+  <h1>MarkZen</h1>
+  <p class="tagline">シンプルで高機能なAndroid向けMarkdownエディタ<br>
+    <span style="font-size:0.9rem;">A powerful, distraction-free Markdown editor for Android</span>
+  </p>
+  <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.antigravity.markzen" target="_blank">Google Play で入手</a>
+</div>
+
+<main>
+
+  <!-- 機能紹介 -->
+  <div class="card">
+    <h2>Features</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="icon">📁</div>
+        <h3>フォルダ管理</h3>
+        <p>SAFを使ったフォルダ・ファイルのツリー表示。複数選択・移動・一括ゴミ箱も対応。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">✏️</div>
+        <h3>Markdownエディタ</h3>
+        <p>リアルタイムプレビュー付きのフル機能エディタ。GFM（表・取り消し線）に対応。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔍</div>
+        <h3>全文検索</h3>
+        <p>ファイル内容を横断した高速全文検索。マッチ箇所のハイライト表示付き。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📄</div>
+        <h3>PDF書き出し</h3>
+        <p>Markdownをそのままスタイル付きPDFとして複数ページで書き出し。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🕒</div>
+        <h3>編集履歴</h3>
+        <p>ファイルごとに編集履歴を自動保存。過去バージョンへの復元が可能。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🗑️</div>
+        <h3>ゴミ箱機能</h3>
+        <p>削除ファイルはゴミ箱に保管。元のパスへの完全復元に対応。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🌙</div>
+        <h3>ダーク/ライトモード</h3>
+        <p>システム設定に追従する自動テーマ切り替え。フォントサイズも調整可能。</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🌐</div>
+        <h3>日本語・英語対応</h3>
+        <p>システム言語に応じてUIを自動切り替え。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- アプリ説明 -->
+  <div class="card">
+    <h2>About</h2>
+    <p>MarkZenは、Androidのストレージ（SAF）を直接使ってMarkdownファイルを管理・編集できるエディタです。クラウド同期を使わず、自分のフォルダにファイルを置いて使いたい方に最適です。</p>
+    <p>MarkZen is a Markdown editor for Android that lets you manage and edit files directly in your local storage via SAF. Perfect for users who prefer working with their own files without cloud sync.</p>
+  </div>
+
+  <!-- 法的文書 -->
+  <div class="card">
+    <h2>Legal</h2>
+    <div class="legal-links">
+      <a href="privacy.html">プライバシーポリシー<br><span style="font-size:0.8rem;font-weight:400;">Privacy Policy</span></a>
+      <a href="terms.html">利用規約<br><span style="font-size:0.8rem;font-weight:400;">Terms of Service</span></a>
+    </div>
+  </div>
+
+  <!-- サポート -->
+  <div class="card">
+    <h2>Support</h2>
+    <p>ご質問・ご意見は下記までお気軽にどうぞ。<br>
+       For questions or feedback, feel free to reach out.</p>
+    <p><a href="mailto:hiro.studio.support@gmail.com" style="color:#6c63ff;font-weight:600;">hiro.studio.support@gmail.com</a></p>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Hiro Studio &nbsp;|&nbsp; <a href="../../">Home</a> &nbsp;|&nbsp; <a href="mailto:hiro.studio.support@gmail.com">Contact</a></p>
+</footer>
+
+</body>
+</html>
