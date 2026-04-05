@@ -14,21 +14,92 @@
       document.documentElement.lang = savedLang;
     })();
 
-    function toggleLang() {
-      const currentLang = document.documentElement.lang;
-      const newLang = currentLang === 'en' ? 'ja' : 'en';
-      document.documentElement.lang = newLang;
-      localStorage.setItem('lang', newLang);
+    function toggleLangMenu(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('lang-menu');
+      const isVisible = menu.style.display === 'block';
+      menu.style.display = isVisible ? 'none' : 'block';
     }
+
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
+      const menu = document.getElementById('lang-menu');
+      if (menu) menu.style.display = 'none';
+    }
+
+    window.onclick = function() {
+      const menu = document.getElementById('lang-menu');
+      if (menu) menu.style.display = 'none';
+    };
   </script>
+  <style>
+    .lang-picker-container {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+    }
+    .lang-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      min-width: 140px;
+      margin-top: 12px;
+      padding: 8px 0;
+      list-style: none;
+      border: 1px solid rgba(0,0,0,0.05);
+      animation: fadeIn 0.2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .lang-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #1a1a2e;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: background 0.15s, color 0.15s;
+      text-align: left;
+    }
+    .lang-menu a:hover {
+      background: #f4f5ff;
+      color: #6c63ff;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 50%;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lang-btn:hover {
+      background: rgba(0,0,0,0.05);
+    }
+  </style>
   <style>
     body { font-family: sans-serif; line-height: 1.7; margin: 24px; max-width: 900px; position: relative; }
     hr { border: none; border-top: 1px solid #ddd; margin: 48px 0; }
   </style>
 </head>
 <body>
-  <div style="position: absolute; top: 16px; right: 16px;">
-    <button onclick="toggleLang()" style="background:none; border:none; font-size: 1.5rem; cursor: pointer;" title="Toggle Language">🌐</button>
+  <div class="lang-picker-container">
+    <button onclick="toggleLangMenu(event)" class="lang-btn" title="Select Language">🌐</button>
+    <div id="lang-menu" class="lang-menu">
+      <a href="javascript:void(0)" onclick="setLang('en')">English</a>
+      <a href="javascript:void(0)" onclick="setLang('ja')">日本語</a>
+    </div>
   </div>
 
 <div lang="ja">
@@ -84,6 +155,7 @@
   <ul>
     <li>We are not responsible for any damages resulting from the use of this App.</li>
     <li>The same applies to damages resulting from failures of external services.</li>
+    <li>Regular backups are suggested.</li>
   </ul>
 
   <h2>5. Support</h2>

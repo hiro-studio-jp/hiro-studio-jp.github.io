@@ -14,12 +14,24 @@
       document.documentElement.lang = savedLang;
     })();
 
-    function toggleLang() {
-      const currentLang = document.documentElement.lang;
-      const newLang = currentLang === 'en' ? 'ja' : 'en';
-      document.documentElement.lang = newLang;
-      localStorage.setItem('lang', newLang);
+    function toggleLangMenu(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('lang-menu');
+      const isVisible = menu.style.display === 'block';
+      menu.style.display = isVisible ? 'none' : 'block';
     }
+
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
+      const menu = document.getElementById('lang-menu');
+      if (menu) menu.style.display = 'none';
+    }
+
+    window.onclick = function() {
+      const menu = document.getElementById('lang-menu');
+      if (menu) menu.style.display = 'none';
+    };
   </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,6 +40,61 @@
       background: #f7f8fa;
       color: #1a1a2e;
       min-height: 100vh;
+    }
+
+    /* ── Language Picker ── */
+    .lang-picker-container {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      z-index: 1000;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 50%;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lang-btn:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    .lang-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      min-width: 140px;
+      margin-top: 12px;
+      padding: 8px 0;
+      list-style: none;
+      border: 1px solid rgba(0,0,0,0.05);
+      animation: fadeIn 0.2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .lang-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #1a1a2e;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: background 0.15s, color 0.15s;
+      text-align: left;
+    }
+    .lang-menu a:hover {
+      background: #f4f5ff;
+      color: #6c63ff;
     }
 
     /* ── Header ── */
@@ -149,7 +216,13 @@
 <body>
 
 <header>
-  <button onclick="toggleLang()" style="position: absolute; top: 24px; right: 24px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #fff;" title="Toggle Language">🌐</button>
+  <div class="lang-picker-container">
+    <button onclick="toggleLangMenu(event)" class="lang-btn" title="Select Language">🌐</button>
+    <div id="lang-menu" class="lang-menu">
+      <a href="javascript:void(0)" onclick="setLang('en')">English</a>
+      <a href="javascript:void(0)" onclick="setLang('ja')">日本語</a>
+    </div>
+  </div>
   <h1>Hiro Studio</h1>
   <p lang="ja">シンプルで実用的なAndroidアプリを開発しています。</p>
   <p lang="en">Building simple, practical Android apps.</p>
