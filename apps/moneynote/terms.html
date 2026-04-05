@@ -3,12 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MoneyNote 利用規約</title>
+  <title>MoneyNote 利用規約 / Terms of Service</title>
   <style>
-    body { font-family: sans-serif; line-height: 1.7; margin: 24px; max-width: 900px; }
+    :lang(en) [lang="ja"] { display: none !important; }
+    :lang(ja) [lang="en"] { display: none !important; }
+  </style>
+  <script>
+    (function() {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      document.documentElement.lang = savedLang;
+    })();
+
+    function toggleLang() {
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'en' ? 'ja' : 'en';
+      document.documentElement.lang = newLang;
+      localStorage.setItem('lang', newLang);
+    }
+  </script>
+  <style>
+    body { font-family: sans-serif; line-height: 1.7; margin: 24px; max-width: 900px; position: relative; }
+    hr { border: none; border-top: 1px solid #ddd; margin: 48px 0; }
   </style>
 </head>
 <body>
+  <div style="position: absolute; top: 16px; right: 16px;">
+    <button onclick="toggleLang()" style="background:none; border:none; font-size: 1.5rem; cursor: pointer;" title="Toggle Language">🌐</button>
+  </div>
+
+<div lang="ja">
   <h1>MoneyNote 利用規約</h1>
 
   <p>本利用規約（以下「本規約」）は、Hiro Studio（以下「本サービス提供者」）が提供する家計簿アプリ「MoneyNote」（以下「本アプリ」）の利用条件を定めるものです。</p>
@@ -37,5 +60,37 @@
 
   <h2>6. 規約変更</h2>
   <p>必要に応じて本規約を改定し、本ページにて公表します。</p>
+</div>
+
+<div lang="en">
+  <h1>MoneyNote Terms of Service</h1>
+
+  <p>These Terms of Service (hereinafter referred to as the "Terms") stipulate the conditions of use for the household account book app "MoneyNote" (hereinafter referred to as the "App") provided by Hiro Studio (hereinafter referred to as the "Service Provider").</p>
+
+  <h2>1. Provision of the App</h2>
+  <p>The Service Provider provides this App, but does not guarantee its completeness, accuracy, or continuous provision.</p>
+
+  <h2>2. Prohibited Acts</h2>
+  <ul>
+    <li>Unauthorized access, alteration, or analysis</li>
+    <li>Acts that interfere with the operation of the App</li>
+    <li>Acts violating laws, regulations, or public policy and morals</li>
+  </ul>
+
+  <h2>3. Data Management</h2>
+  <p>Data entered by the user is stored on Supabase. The Service Provider will strive to manage it appropriately, but shall not be responsible for data loss caused by system failures or other reasons.</p>
+
+  <h2>4. Disclaimers</h2>
+  <ul>
+    <li>We are not responsible for any damages resulting from the use of this App.</li>
+    <li>The same applies to damages resulting from failures of external services.</li>
+  </ul>
+
+  <h2>5. Support</h2>
+  <p><a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】Inquiry from Terms of Service">hiro.studio.support@gmail.com</a></p>
+
+  <h2>6. Changes to Terms</h2>
+  <p>We will revise these Terms as necessary and publish them on this page.</p>
+</div>
 </body>
 </html>

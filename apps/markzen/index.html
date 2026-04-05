@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MarkZen – Hiro Studio</title>
   <style>
+    :lang(en) [lang="ja"] { display: none !important; }
+    :lang(ja) [lang="en"] { display: none !important; }
+  </style>
+  <script>
+    (function() {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      document.documentElement.lang = savedLang;
+    })();
+
+    function toggleLang() {
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'en' ? 'ja' : 'en';
+      document.documentElement.lang = newLang;
+      localStorage.setItem('lang', newLang);
+    }
+  </script>
+  <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
@@ -17,6 +34,9 @@
     nav {
       background: #1a1a2e;
       padding: 14px 24px;
+      display: flex;
+      justify-content: space-between; /* Add this */
+      align-items: center; /* Add this */
     }
     nav a {
       color: #b0b8d0;
@@ -142,15 +162,16 @@
 
 <nav>
   <a href="../../">Hiro Studio</a>
+  <button onclick="toggleLang()" style="background:none; border:none; font-size: 1.3rem; cursor: pointer; color: #fff;" title="Switch Language">🌐</button>
 </nav>
 
 <div class="hero">
   <div class="hero-icon">✍️</div>
   <h1>MarkZen</h1>
-  <p class="tagline">シンプルで高機能なAndroid向けMarkdownエディタ<br>
-    <span style="font-size:0.9rem;">A powerful, distraction-free Markdown editor for Android</span>
-  </p>
-  <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.antigravity.markzen" target="_blank">Google Play で入手</a>
+  <p class="tagline" lang="ja">シンプルで高機能なAndroid向けMarkdownエディタ</p>
+  <p class="tagline" lang="en" style="font-size:0.95rem;">A powerful, distraction-free Markdown editor for Android</p>
+  <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.antigravity.markzen" target="_blank" lang="ja">Google Play で入手</a>
+  <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.antigravity.markzen" target="_blank" lang="en">Get it on Google Play</a>
 </div>
 
 <main>
@@ -205,24 +226,26 @@
   <!-- アプリ説明 -->
   <div class="card">
     <h2>About</h2>
-    <p>MarkZenは、Androidのストレージ（SAF）を直接使ってMarkdownファイルを管理・編集できるエディタです。クラウド同期を使わず、自分のフォルダにファイルを置いて使いたい方に最適です。</p>
-    <p>MarkZen is a Markdown editor for Android that lets you manage and edit files directly in your local storage via SAF. Perfect for users who prefer working with their own files without cloud sync.</p>
+    <p lang="ja">MarkZenは、Androidのストレージ（SAF）を直接使ってMarkdownファイルを管理・編集できるエディタです。クラウド同期を使わず、自分のフォルダにファイルを置いて使いたい方に最適です。</p>
+    <p lang="en">MarkZen is a Markdown editor for Android that lets you manage and edit files directly in your local storage via SAF. Perfect for users who prefer working with their own files without cloud sync.</p>
   </div>
 
   <!-- 法的文書 -->
   <div class="card">
     <h2>Legal</h2>
     <div class="legal-links">
-      <a href="privacy.html">プライバシーポリシー<br><span style="font-size:0.8rem;font-weight:400;">Privacy Policy</span></a>
-      <a href="terms.html">利用規約<br><span style="font-size:0.8rem;font-weight:400;">Terms of Service</span></a>
+      <a href="privacy.html" lang="ja">プライバシーポリシー</a>
+      <a href="terms.html" lang="ja">利用規約</a>
+      <a href="privacy.html" lang="en">Privacy Policy</a>
+      <a href="terms.html" lang="en">Terms of Service</a>
     </div>
   </div>
 
   <!-- サポート -->
   <div class="card">
     <h2>Support</h2>
-    <p>ご質問・ご意見は下記までお気軽にどうぞ。<br>
-       For questions or feedback, feel free to reach out.</p>
+    <p lang="ja">ご質問・ご意見は下記までお気軽にどうぞ。</p>
+    <p lang="en">For questions or feedback, feel free to reach out.</p>
     <p><a href="mailto:hiro.studio.support@gmail.com" style="color:#6c63ff;font-weight:600;">hiro.studio.support@gmail.com</a></p>
   </div>
 

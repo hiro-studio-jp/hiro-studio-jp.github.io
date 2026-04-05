@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hiro Studio</title>
   <style>
+    :lang(en) [lang="ja"] { display: none !important; }
+    :lang(ja) [lang="en"] { display: none !important; }
+  </style>
+  <script>
+    (function() {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      document.documentElement.lang = savedLang;
+    })();
+
+    function toggleLang() {
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'en' ? 'ja' : 'en';
+      document.documentElement.lang = newLang;
+      localStorage.setItem('lang', newLang);
+    }
+  </script>
+  <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
@@ -19,6 +36,7 @@
       color: #fff;
       padding: 64px 24px 56px;
       text-align: center;
+      position: relative;
     }
     header h1 {
       font-size: 2.4rem;
@@ -131,9 +149,10 @@
 <body>
 
 <header>
+  <button onclick="toggleLang()" style="position: absolute; top: 24px; right: 24px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #fff;" title="Toggle Language">🌐</button>
   <h1>Hiro Studio</h1>
-  <p>シンプルで実用的なAndroidアプリを開発しています。<br>
-     Building simple, practical Android apps.</p>
+  <p lang="ja">シンプルで実用的なAndroidアプリを開発しています。</p>
+  <p lang="en">Building simple, practical Android apps.</p>
 </header>
 
 <main>
@@ -144,7 +163,8 @@
       <a class="app-card" href="apps/markzen/">
         <div class="app-icon">✍️</div>
         <h3>MarkZen</h3>
-        <p>フォルダ管理・編集履歴・全文検索・PDF書き出しに対応したAndroid向けMarkdownエディタ。</p>
+        <p lang="ja">フォルダ管理・編集履歴・全文検索・PDF書き出しに対応したAndroid向けMarkdownエディタ。</p>
+        <p lang="en">A powerful Markdown editor for Android with folder management, edit history, full-text search, and PDF export.</p>
         <span class="badge">Android</span>
       </a>
 
@@ -156,8 +176,8 @@
   <div class="about">
     <section>
       <h2>About</h2>
-      <p>Hiro Studioは個人開発者によるAndroidアプリスタジオです。日常の作業をシンプルに、そして少し楽しくするアプリを目指しています。</p>
-      <p>Hiro Studio is an indie Android app studio. We aim to build apps that make everyday tasks simpler and a little more enjoyable.</p>
+      <p lang="ja">Hiro Studioは個人開発者によるAndroidアプリスタジオです。日常の作業をシンプルに、そして少し楽しくするアプリを目指しています。</p>
+      <p lang="en">Hiro Studio is an indie Android app studio. We aim to build apps that make everyday tasks simpler and a little more enjoyable.</p>
       <p>Contact: <a href="mailto:hiro.studio.support@gmail.com">hiro.studio.support@gmail.com</a></p>
     </section>
   </div>

@@ -3,18 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MoneyNote プライバシーポリシー</title>
+  <title>MoneyNote プライバシーポリシー / Privacy Policy</title>
   <style>
-    body { font-family: sans-serif; line-height: 1.7; margin: 24px; max-width: 900px; color: #333; }
+    :lang(en) [lang="ja"] { display: none !important; }
+    :lang(ja) [lang="en"] { display: none !important; }
+  </style>
+  <script>
+    (function() {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      document.documentElement.lang = savedLang;
+    })();
+
+    function toggleLang() {
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'en' ? 'ja' : 'en';
+      document.documentElement.lang = newLang;
+      localStorage.setItem('lang', newLang);
+    }
+  </script>
+  <style>
+    body { font-family: sans-serif; line-height: 1.7; margin: 24px; max-width: 900px; color: #333; position: relative; }
     h1 { border-bottom: 2px solid #ddd; padding-bottom: 10px; }
     h2 { margin-top: 30px; border-left: 5px solid #4CAF50; padding-left: 10px; }
     ul { padding-left: 20px; }
     li { margin-bottom: 5px; }
     a { color: #1a73e8; text-decoration: none; }
     a:hover { text-decoration: underline; }
+    hr { border: none; border-top: 1px solid #ddd; margin: 48px 0; }
   </style>
 </head>
 <body>
+  <div style="position: absolute; top: 16px; right: 16px;">
+    <button onclick="toggleLang()" style="background:none; border:none; font-size: 1.5rem; cursor: pointer;" title="Toggle Language">🌐</button>
+  </div>
+
+<div lang="ja">
   <h1>MoneyNote プライバシーポリシー</h1>
   <p>本プライバシーポリシーは、Hiro Studio（以下「本サービス提供者」）が提供する家計簿アプリ「MoneyNote」（以下「本アプリ」）における利用者情報の取扱いについて定めるものです。</p>
 
@@ -55,5 +78,49 @@
 
   <h2>8. 改定</h2>
   <p>必要に応じて本ポリシーを改定し、本ページにて公表します。</p>
+</div>
+
+<div lang="en">
+  <h1>MoneyNote Privacy Policy</h1>
+  <p>This Privacy Policy stipulates the handling of user information in the household account book app "MoneyNote" (hereinafter referred to as the "App") provided by Hiro Studio (hereinafter referred to as the "Service Provider").</p>
+
+  <h2>1. Information We Collect</h2>
+  <ul>
+    <li><strong>Authentication Information</strong>: Email address, password (encrypted and stored via Supabase)</li>
+    <li><strong>Household Account Data</strong>: Income/expense information, categories, notes, etc.</li>
+    <li><strong>Usage Data</strong>: Anonymized technical data such as error information</li>
+    <li><strong>Advertising Identifiers</strong>: Advertising ID (Android Advertising ID), etc. (for advertising purposes described below)</li>
+  </ul>
+
+  <h2>2. Advertising</h2>
+  <p>This App uses <strong>Google AdMob</strong> for the purpose of delivering advertisements. Google AdMob may automatically collect information to identify users (such as advertising IDs). This information is used for displaying personalized ads, measuring ad performance, and analysis. Please refer to Google's Privacy Policy regarding the handling of this information.</p>
+  <ul>
+    <li><a href="https://policies.google.com/technologies/ads?hl=en" target="_blank" rel="noopener noreferrer">Google Policies & Terms (Advertising)</a></li>
+  </ul>
+
+  <h2>3. Collection Methods</h2>
+  <p>Information is obtained through user input or automatic collection associated with the use of the App (such as advertising modules).</p>
+
+  <h2>4. Purpose of Use</h2>
+  <ul>
+    <li>Provision and maintenance of this App</li>
+    <li>Data synchronization and backup via cloud features (using Supabase)</li>
+    <li>Quality improvement and fault analysis</li>
+    <li>Delivery and optimization of advertisements</li>
+    <li>Responding to inquiries</li>
+  </ul>
+
+  <h2>5. Data Storage and Management</h2>
+  <p>The collected information is securely managed using <strong>Supabase</strong>.</p>
+
+  <h2>6. Provision to Third Parties</h2>
+  <p>We will not provide your information to third parties unless required by law.</p>
+
+  <h2>7. Contact Us</h2>
+  <p><a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】Inquiry from Privacy Policy">hiro.studio.support@gmail.com</a></p>
+
+  <h2>8. Revisions</h2>
+  <p>We will revise this policy as necessary and publish the updates on this page.</p>
+</div>
 </body>
 </html>

@@ -5,9 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>プライバシーポリシー / Privacy Policy – MarkZen</title>
   <style>
+    :lang(en) [lang="ja"] { display: none !important; }
+    :lang(ja) [lang="en"] { display: none !important; }
+  </style>
+  <script>
+    (function() {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      document.documentElement.lang = savedLang;
+    })();
+
+    function toggleLang() {
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'en' ? 'ja' : 'en';
+      document.documentElement.lang = newLang;
+      localStorage.setItem('lang', newLang);
+    }
+  </script>
+  <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f7f8fa; color: #222; line-height: 1.7; }
-    nav { background: #1a1a2e; padding: 14px 24px; }
+    nav {
+      background: #1a1a2e;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
     nav a { color: #b0b8d0; text-decoration: none; font-size: 0.9rem; }
     nav a:hover { color: #fff; }
     nav a::before { content: "← "; }
@@ -27,6 +50,7 @@
 
 <nav>
   <a href="./">MarkZen</a>
+  <button onclick="toggleLang()" style="background:none; border:none; font-size: 1.3rem; cursor: pointer; color: #fff;" title="Switch Language">🌐</button>
 </nav>
 
 <div class="content">
@@ -34,6 +58,7 @@
 <!-- ============================================================ -->
 <!--  日本語版                                                     -->
 <!-- ============================================================ -->
+<div lang="ja">
 <h1>プライバシーポリシー</h1>
 <span class="updated">最終更新日：2026年4月2日</span>
 
@@ -69,11 +94,12 @@
 <p>本ポリシーに関するご質問は下記までご連絡ください。<br>
 メール：<a href="mailto:hiro.studio.support@gmail.com?subject=【MarkZen】プライバシーポリシーよりお問い合わせ">hiro.studio.support@gmail.com</a></p>
 
-<hr>
+</div>
 
 <!-- ============================================================ -->
 <!--  English Version                                             -->
 <!-- ============================================================ -->
+<div lang="en">
 <h1>Privacy Policy</h1>
 <span class="updated">Last updated: April 2, 2026</span>
 
@@ -109,6 +135,7 @@
 <p>If you have any questions about this Privacy Policy, please contact us at:<br>
 Email: <a href="mailto:hiro.studio.support@gmail.com?subject=【MarkZen】Inquiry from Privacy Policy">hiro.studio.support@gmail.com</a></p>
 
+</div>
 </div>
 
 <footer>

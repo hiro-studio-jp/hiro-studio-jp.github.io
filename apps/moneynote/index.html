@@ -5,21 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MoneyNote</title>
   <style>
-    body { font-family: sans-serif; line-height: 1.7; margin: 24px; }
+    :lang(en) [lang="ja"] { display: none !important; }
+    :lang(ja) [lang="en"] { display: none !important; }
+  </style>
+  <script>
+    (function() {
+      const savedLang = localStorage.getItem('lang') || 'en';
+      document.documentElement.lang = savedLang;
+    })();
+
+    function toggleLang() {
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'en' ? 'ja' : 'en';
+      document.documentElement.lang = newLang;
+      localStorage.setItem('lang', newLang);
+    }
+  </script>
+  <style>
+    body { font-family: sans-serif; line-height: 1.7; margin: 24px; position: relative; }
     h1 { margin-bottom: 8px; }
     a { color: #0066cc; }
     ul { margin-top: 24px; }
   </style>
 </head>
 <body>
+  <div style="position: absolute; top: 16px; right: 16px;">
+    <button onclick="toggleLang()" style="background:none; border:none; font-size: 1.5rem; cursor: pointer;" title="Toggle Language">🌐</button>
+  </div>
   <h1>MoneyNote</h1>
-  <p>シンプルでわかりやすい家計簿アプリ「MoneyNote」の専用ページです。</p>
+  <p lang="ja">シンプルでわかりやすい家計簿アプリ「MoneyNote」の専用ページです。</p>
+  <p lang="en">The official page for the simple and intuitive household account book app, MoneyNote.</p>
 
-  <h2>関連リンク</h2>
+  <h2 lang="ja">関連リンク</h2>
+  <h2 lang="en">Related Links</h2>
   <ul>
-    <li><a href="/privacy.html">プライバシーポリシー</a></li>
-    <li><a href="/terms.html">利用規約</a></li>
-    <li>サポート問い合わせ：<a href="mailto:hiro.studio.support@gmail.com">hiro.studio.support@gmail.com</a></li>
+    <li><a href="privacy.html" lang="ja">プライバシーポリシー</a><a href="privacy.html" lang="en">Privacy Policy</a></li>
+    <li><a href="terms.html" lang="ja">利用規約</a><a href="terms.html" lang="en">Terms of Service</a></li>
+    <li>
+      <span lang="ja">サポート問い合わせ：</span><span lang="en">Support Inquiry: </span><a href="mailto:hiro.studio.support@gmail.com">hiro.studio.support@gmail.com</a>
+    </li>
   </ul>
 </body>
 </html>
