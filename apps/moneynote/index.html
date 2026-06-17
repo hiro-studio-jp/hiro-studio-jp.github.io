@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MoneyNote</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoneyNote – Hiro Studio</title>
   <style>
     :lang(en) [lang="ja"] { display: none !important; }
     :lang(ja) [lang="en"] { display: none !important; }
   </style>
   <script>
     (function() {
-      const savedLang = localStorage.getItem('lang') || 'en';
+      const savedLang = localStorage.getItem('lang') || 'ja';
       document.documentElement.lang = savedLang;
     })();
 
@@ -35,10 +35,8 @@
   </script>
   <style>
     .lang-picker-container {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      z-index: 1000;
+      position: relative;
+      margin-left: 16px;
     }
     .lang-menu {
       position: absolute;
@@ -54,6 +52,7 @@
       list-style: none;
       border: 1px solid rgba(0,0,0,0.05);
       animation: fadeIn 0.2s ease-out;
+      z-index: 1000;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-10px); }
@@ -68,6 +67,7 @@
       transition: background 0.15s, color 0.15s;
       text-align: left;
     }
+    .lang-menu a::before { content: none !important; }
     .lang-menu a:hover {
       background: #f4f5ff;
       color: #6c63ff;
@@ -75,7 +75,7 @@
     .lang-btn {
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       cursor: pointer;
       padding: 4px;
       border-radius: 50%;
@@ -83,38 +83,261 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #fff;
     }
     .lang-btn:hover {
-      background: rgba(0,0,0,0.05);
+      background: rgba(255,255,255,0.1);
     }
   </style>
   <style>
-    body { font-family: sans-serif; line-height: 1.7; margin: 24px; position: relative; }
-    h1 { margin-bottom: 8px; }
-    a { color: #0066cc; }
-    ul { margin-top: 24px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+      background: #f7f8fa;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: #1a1a2e;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: #b0b8d0;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    nav a:hover { color: #fff; }
+    nav a::before { content: "← "; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, #1b4f3a 0%, #2d7a57 100%);
+      color: #fff;
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .hero-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .hero .tagline {
+      font-size: 1.05rem;
+      color: #a8d5bc;
+      margin-bottom: 28px;
+    }
+    .btn-store {
+      display: inline-block;
+      background: #4CAF50;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .btn-store:hover { background: #388e3c; }
+
+    /* ── Main ── */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 16px 80px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      margin-bottom: 24px;
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    /* ── Features ── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .feature {
+      background: #f0faf4;
+      border-radius: 12px;
+      padding: 18px 16px;
+    }
+    .feature .icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .feature h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .feature p { font-size: 0.85rem; color: #555; line-height: 1.5; }
+
+    /* ── Description ── */
+    .card p {
+      font-size: 0.97rem;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    .card p:last-child { margin-bottom: 0; }
+
+    /* ── Legal ── */
+    .legal-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .legal-links a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: 2px solid #4CAF50;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .legal-links a:hover {
+      background: #4CAF50;
+      color: #fff;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #999;
+      font-size: 0.85rem;
+    }
+    footer a { color: #4CAF50; text-decoration: none; }
   </style>
 </head>
-<body class="light-bg">
+<body>
+
+<nav>
+  <a href="../../">Hiro Studio</a>
   <div class="lang-picker-container">
     <button onclick="toggleLangMenu(event)" class="lang-btn" title="Select Language">🌐</button>
     <div id="lang-menu" class="lang-menu">
-      <a href="javascript:void(0)" onclick="setLang('en')">English</a>
       <a href="javascript:void(0)" onclick="setLang('ja')">日本語</a>
+      <a href="javascript:void(0)" onclick="setLang('en')">English</a>
     </div>
   </div>
-  <h1>MoneyNote</h1>
-  <p lang="ja">シンプルでわかりやすい家計簿アプリ「MoneyNote」の専用ページです。</p>
-  <p lang="en">The official page for the simple and intuitive household account book app, MoneyNote.</p>
+</nav>
 
-  <h2 lang="ja">関連リンク</h2>
-  <h2 lang="en">Related Links</h2>
-  <ul>
-    <li><a href="privacy.html" lang="ja">プライバシーポリシー</a><a href="privacy.html" lang="en">Privacy Policy</a></li>
-    <li><a href="terms.html" lang="ja">利用規約</a><a href="terms.html" lang="en">Terms of Service</a></li>
-    <li>
-      <span lang="ja">サポート問い合わせ：</span><span lang="en">Support Inquiry: </span><a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】アプリHPよりお問い合わせ" lang="ja">hiro.studio.support@gmail.com</a><a href="mailto:hiro.studio.support@gmail.com?subject=[MoneyNote]%20Inquiry%20from%20App%20HP" lang="en">hiro.studio.support@gmail.com</a>
-    </li>
-  </ul>
+<div class="hero">
+  <div class="hero-icon">💰</div>
+  <h1>MoneyNote</h1>
+  <p class="tagline" lang="ja">シンプルで使いやすい家計簿アプリ</p>
+  <p class="tagline" lang="en">Simple and easy-to-use budget tracker for Android</p>
+  <!-- Play Store公開後に有効化
+  <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.hirostudio.moneynote" target="_blank" lang="ja">Google Play で入手</a>
+  <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.hirostudio.moneynote" target="_blank" lang="en">Get it on Google Play</a>
+  -->
+</div>
+
+<main>
+
+  <!-- 機能紹介 -->
+  <div class="card">
+    <h2>Features</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="icon">📝</div>
+        <h3 lang="ja">収支の記録</h3>
+        <h3 lang="en">Transaction Recording</h3>
+        <p lang="ja">収入・支出をすばやく入力。タグで分類して管理できます。</p>
+        <p lang="en">Quickly log income and expenses. Organize with tags for easy management.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📊</div>
+        <h3 lang="ja">ダッシュボード</h3>
+        <h3 lang="en">Dashboard</h3>
+        <p lang="ja">月次の収支グラフ、支出の内訳（円グラフ）、前年比グラフを一目で確認。</p>
+        <p lang="en">View monthly balance charts, expense breakdowns, and year-over-year comparisons at a glance.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔮</div>
+        <h3 lang="ja">月末着地予測</h3>
+        <h3 lang="en">Month-End Forecast</h3>
+        <p lang="ja">現在の支出ペースをもとに、月末の残高を自動計算します。</p>
+        <p lang="en">Automatically estimates your end-of-month balance based on your current spending pace.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🎯</div>
+        <h3 lang="ja">予算管理</h3>
+        <h3 lang="en">Budget Management</h3>
+        <p lang="ja">月ごとの予算を設定して、使いすぎを防止します。</p>
+        <p lang="en">Set a monthly budget to keep your spending in check.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📂</div>
+        <h3 lang="ja">CSV インポート / エクスポート</h3>
+        <h3 lang="en">CSV Import / Export</h3>
+        <p lang="ja">データの持ち出しや一括取り込みに対応。</p>
+        <p lang="en">Export your data or import transactions in bulk.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">☁️</div>
+        <h3 lang="ja">クラウド同期</h3>
+        <h3 lang="en">Cloud Sync</h3>
+        <p lang="ja">安全なクラウド保存で、機種変更時もデータを引き継げます。</p>
+        <p lang="en">Secure cloud storage keeps your data safe, even when switching devices.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- アプリ説明 -->
+  <div class="card">
+    <h2>About</h2>
+    <p lang="ja">MoneyNote は、日々の収支をかんたんに記録できるシンプルな家計簿アプリです。操作性にこだわり、毎日続けやすい設計を心がけました。ダッシュボードで支出の傾向を把握し、予算機能で無駄遣いを防ぎましょう。</p>
+    <p lang="en">MoneyNote is a simple budget tracking app designed for recording your daily income and expenses with ease. Built with simplicity in mind so you can keep up with your finances every day. Use the dashboard to understand your spending habits and the budget feature to avoid overspending.</p>
+  </div>
+
+  <!-- 法的文書 -->
+  <div class="card">
+    <h2>Legal</h2>
+    <div class="legal-links">
+      <a href="privacy.html" lang="ja">プライバシーポリシー</a>
+      <a href="terms.html" lang="ja">利用規約</a>
+      <a href="privacy.html" lang="en">Privacy Policy</a>
+      <a href="terms.html" lang="en">Terms of Service</a>
+    </div>
+  </div>
+
+  <!-- サポート -->
+  <div class="card">
+    <h2>Support</h2>
+    <p lang="ja">ご質問・ご意見は下記までお気軽にどうぞ。</p>
+    <p lang="en">For questions or feedback, feel free to reach out.</p>
+    <p>
+      <a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】アプリHPよりお問い合わせ" lang="ja" style="color:#4CAF50;font-weight:600;">hiro.studio.support@gmail.com</a>
+      <a href="mailto:hiro.studio.support@gmail.com?subject=[MoneyNote]%20Inquiry%20from%20App%20HP" lang="en" style="color:#4CAF50;font-weight:600;">hiro.studio.support@gmail.com</a>
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 Hiro Studio &nbsp;|&nbsp; <a href="../../">Home</a> &nbsp;|&nbsp;
+    <a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】アプリHPよりお問い合わせ" lang="ja">Contact</a>
+    <a href="mailto:hiro.studio.support@gmail.com?subject=[MoneyNote]%20Inquiry%20from%20App%20HP" lang="en">Contact</a>
+  </p>
+</footer>
+
 </body>
 </html>
