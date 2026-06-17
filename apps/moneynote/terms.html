@@ -10,7 +10,7 @@
   </style>
   <script>
     (function() {
-      const savedLang = localStorage.getItem('lang') || 'en';
+      const savedLang = localStorage.getItem('lang') || 'ja';
       document.documentElement.lang = savedLang;
     })();
 
@@ -87,82 +87,84 @@
     .lang-btn:hover {
       background: rgba(0,0,0,0.05);
     }
-  </style>
-  <style>
-    body { font-family: sans-serif; line-height: 1.7; margin: 24px; max-width: 900px; position: relative; }
-    hr { border: none; border-top: 1px solid #ddd; margin: 48px 0; }
+    body { font-family: sans-serif; line-height: 1.7; margin: 24px; max-width: 900px; color: #333; position: relative; }
+    h1 { border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+    h2 { margin-top: 30px; border-left: 5px solid #4CAF50; padding-left: 10px; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 5px; }
+    a { color: #1a73e8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="lang-picker-container">
     <button onclick="toggleLangMenu(event)" class="lang-btn" title="Select Language">🌐</button>
     <div id="lang-menu" class="lang-menu">
-      <a href="javascript:void(0)" onclick="setLang('en')">English</a>
       <a href="javascript:void(0)" onclick="setLang('ja')">日本語</a>
+      <a href="javascript:void(0)" onclick="setLang('en')">English</a>
     </div>
   </div>
 
-<div lang="ja">
-  <h1>MoneyNote 利用規約</h1>
+  <div lang="ja">
+    <h1>MoneyNote 利用規約</h1>
+    <p>本利用規約（以下「本規約」）は、Hiro Studio（以下「本サービス提供者」）が提供する家計簿アプリ「MoneyNote」（以下「本アプリ」）の利用条件を定めるものです。</p>
 
-  <p>本利用規約（以下「本規約」）は、Hiro Studio（以下「本サービス提供者」）が提供する家計簿アプリ「MoneyNote」（以下「本アプリ」）の利用条件を定めるものです。</p>
+    <h2>1. 本アプリの提供</h2>
+    <p>本サービス提供者は本アプリを提供しますが、完全性・正確性・継続提供を保証しません。</p>
 
-  <h2>1. 本アプリの提供</h2>
-  <p>本サービス提供者は本アプリを提供しますが、完全性・正確性・継続提供を保証しません。</p>
+    <h2>2. 禁止事項</h2>
+    <ul>
+      <li>不正アクセス、改ざん、解析行為</li>
+      <li>アプリ運用の妨害行為</li>
+      <li>法令・公序良俗に反する行為</li>
+    </ul>
 
-  <h2>2. 禁止事項</h2>
-  <ul>
-    <li>不正アクセス、改ざん、解析行為</li>
-    <li>アプリ運用の妨害行為</li>
-    <li>法令・公序良俗に反する行為</li>
-  </ul>
+    <h2>3. データ管理</h2>
+    <p>ユーザーが入力したデータは Supabase 上に保存されます。本サービス提供者は適切な管理に努めますが、障害等によるデータ消失の責任は負いません。</p>
 
-  <h2>3. データ管理</h2>
-  <p>ユーザーが入力したデータは Supabase 上に保存されます。本サービス提供者は適切な管理に努めますが、障害等によるデータ消失の責任は負いません。</p>
+    <h2>4. 免責事項</h2>
+    <ul>
+      <li>本アプリ利用による損害について責任を負いません。</li>
+      <li>外部サービスの障害に起因する損害も同様です。</li>
+    </ul>
 
-  <h2>4. 免責事項</h2>
-  <ul>
-    <li>本アプリ利用による損害について責任を負いません。</li>
-    <li>外部サービスの障害に起因する損害も同様です。</li>
-  </ul>
+    <h2>5. サポート</h2>
+    <p><a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】利用規約よりお問い合わせ">hiro.studio.support@gmail.com</a></p>
 
-  <h2>5. サポート</h2>
-  <p><a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】利用規約よりお問い合わせ">hiro.studio.support@gmail.com</a></p>
+    <h2>6. 規約変更</h2>
+    <p>必要に応じて本規約を改定し、本ページにて公表します。</p>
+    <p>最終更新日: 2026年6月17日</p>
+  </div>
 
-  <h2>6. 規約変更</h2>
-  <p>必要に応じて本規約を改定し、本ページにて公表します。</p>
-</div>
+  <div lang="en">
+    <h1>MoneyNote Terms of Service</h1>
+    <p>These Terms of Service (hereinafter referred to as the "Terms") stipulate the conditions of use for the household account book app "MoneyNote" (hereinafter referred to as the "App") provided by Hiro Studio (hereinafter referred to as the "Service Provider").</p>
 
-<div lang="en">
-  <h1>MoneyNote Terms of Service</h1>
+    <h2>1. Provision of the App</h2>
+    <p>The Service Provider provides this App, but does not guarantee its completeness, accuracy, or continuous provision.</p>
 
-  <p>These Terms of Service (hereinafter referred to as the "Terms") stipulate the conditions of use for the household account book app "MoneyNote" (hereinafter referred to as the "App") provided by Hiro Studio (hereinafter referred to as the "Service Provider").</p>
+    <h2>2. Prohibited Acts</h2>
+    <ul>
+      <li>Unauthorized access, alteration, or analysis</li>
+      <li>Acts that interfere with the operation of the App</li>
+      <li>Acts violating laws, regulations, or public policy and morals</li>
+    </ul>
 
-  <h2>1. Provision of the App</h2>
-  <p>The Service Provider provides this App, but does not guarantee its completeness, accuracy, or continuous provision.</p>
+    <h2>3. Data Management</h2>
+    <p>Data entered by the user is stored on Supabase. The Service Provider will strive to manage it appropriately, but shall not be responsible for data loss caused by system failures or other reasons.</p>
 
-  <h2>2. Prohibited Acts</h2>
-  <ul>
-    <li>Unauthorized access, alteration, or analysis</li>
-    <li>Acts that interfere with the operation of the App</li>
-    <li>Acts violating laws, regulations, or public policy and morals</li>
-  </ul>
+    <h2>4. Disclaimers</h2>
+    <ul>
+      <li>We are not responsible for any damages resulting from the use of this App.</li>
+      <li>The same applies to damages resulting from failures of external services.</li>
+    </ul>
 
-  <h2>3. Data Management</h2>
-  <p>Data entered by the user is stored on Supabase. The Service Provider will strive to manage it appropriately, but shall not be responsible for data loss caused by system failures or other reasons.</p>
+    <h2>5. Support</h2>
+    <p><a href="mailto:hiro.studio.support@gmail.com?subject=[MoneyNote]%20Inquiry%20from%20Terms%20of%20Service">hiro.studio.support@gmail.com</a></p>
 
-  <h2>4. Disclaimers</h2>
-  <ul>
-    <li>We are not responsible for any damages resulting from the use of this App.</li>
-    <li>The same applies to damages resulting from failures of external services.</li>
-    <li>Regular backups are suggested.</li>
-  </ul>
-
-  <h2>5. Support</h2>
-  <p><a href="mailto:hiro.studio.support@gmail.com?subject=[MoneyNote]%20Inquiry%20from%20Terms%20of%20Service">hiro.studio.support@gmail.com</a></p>
-
-  <h2>6. Changes to Terms</h2>
-  <p>We will revise these Terms as necessary and publish them on this page.</p>
-</div>
+    <h2>6. Changes to Terms</h2>
+    <p>We will revise these Terms as necessary and publish them on this page.</p>
+    <p>Last updated: June 17, 2026</p>
+  </div>
 </body>
 </html>
