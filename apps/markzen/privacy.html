@@ -133,7 +133,7 @@
 <!-- ============================================================ -->
 <div lang="ja">
 <h1>プライバシーポリシー</h1>
-<span class="updated">最終更新日：2026年6月4日</span>
+<span class="updated">最終更新日：2026年8月28日</span>
 
 <p>Hiro Studio（以下「当社」）は、Androidアプリ「MarkZen」（以下「本アプリ」）をご利用の皆様のプライバシーを尊重し、以下のポリシーを定めます。本アプリは、GDPRおよびCCPAを含む各国のプライバシー保護基準を考慮して運営されています。</p>
 
@@ -157,7 +157,7 @@
 </ul>
 
 <h2>2. 収集しない情報</h2>
-<p>当社は、以下の情報を当社のサーバーや第三者へ送信・共有することはありません。</p>
+<p>当社は、以下の情報を当社のサーバーへ送信することはなく、また、ユーザーが自ら選んだ保存先（Dropbox / Google ドライブ）を除く第三者へ送信・共有することもありません。</p>
 <ul>
   <li>ユーザーが作成・編集するファイルの内容およびファイル名</li>
   <li>個人を特定できる情報（氏名、メールアドレス、電話番号、住所など）</li>
@@ -171,8 +171,13 @@
   <li>アプリの安定性向上およびバグ修正のため</li>
 </ul>
 
-<h2>4. ストレージへのアクセス</h2>
-<p>本アプリはMarkdownファイルの作成・編集・管理を目的として、ユーザーが明示的に選択したフォルダおよびファイルにのみアクセスします。ファイルの内容は、全文検索や編集履歴などの機能のために端末内のデータベースに保存されることがありますが、当社のサーバーや第三者へ送信されることはありません。</p>
+<h2>4. データの保存場所</h2>
+<p>本アプリは、ユーザーが選んだ保存先にファイルを保存します。保存先は「この端末」「Dropbox」「Google ドライブ」のいずれかで、ユーザーが設定から選択します。<strong>当社は自社のサーバーを持たないため、ファイルを当社が預かることはありません。</strong></p>
+<ul>
+  <li><strong>この端末：</strong>ユーザーが明示的に選択したフォルダの中にのみファイルを作成・編集します。</li>
+  <li><strong>Dropbox / Google ドライブ：</strong>ファイルはユーザー自身のアカウント内に保存されます。詳細は第8項・第9項をご覧ください。</li>
+</ul>
+<p>あわせて、全文検索のための索引と、クラウドを保存先に選んだ場合のファイル内容の控えを端末内に保存します。これらは端末内にのみ存在し、<strong>本アプリを削除すると一緒に削除されます。</strong>当社のサーバーや第三者へ送信されることはありません。</p>
 
 <h2>5. 広告について</h2>
 <p>本アプリはGoogle AdMobを利用してバナー広告・リワード広告を表示します。リワード広告はPDF書き出し等の特定機能の利用時に表示されます。AdMobはユーザーの興味・関心に基づいたパーソナライズ広告を配信するために情報を収集する場合があります。詳細はGoogleの広告に関するポリシーをご確認ください。</p>
@@ -197,7 +202,19 @@
   <li><strong>第三者のポリシー：</strong>Dropboxを通じたデータの取り扱いには、Dropboxのプライバシーポリシーが適用されます。詳細は <a href="https://www.dropbox.com/privacy" target="_blank">https://www.dropbox.com/privacy</a> をご確認ください。</li>
 </ul>
 
-<h2>9. 外部AIサービスとの連携</h2>
+<h2>9. Google ドライブ連携について</h2>
+<p>本アプリはオプションとしてGoogle ドライブ連携機能を提供しています。この機能はユーザーが明示的に選択した場合にのみ有効となります。</p>
+<ul>
+  <li><strong>認証：</strong>OAuth 2.0による認証を通じて、ユーザーのGoogleアカウントにアクセスします。</li>
+  <li><strong>アクセス範囲：</strong><code>drive.file</code>スコープのみを使用します。<strong>本アプリが作成したファイル、およびユーザーが本アプリで明示的に開いたファイルにのみアクセスでき、Google ドライブ内のそれ以外のファイルを参照することはできません。</strong></li>
+  <li><strong>作成されるフォルダ：</strong>初回接続時に、マイドライブの直下に「MarkZen」フォルダを作成し、これを作業フォルダとして使用します。</li>
+  <li><strong>トークンの保存：</strong>認証に必要なアクセストークン等は端末内に暗号化した状態で保存されます。当社のサーバーには送信されません。</li>
+  <li><strong>用途の限定：</strong>Google ドライブから取得したファイルの内容およびファイル名は、Markdownファイルの閲覧・編集・同期・全文検索という本アプリの機能を提供するためにのみ使用します。<strong>広告配信（AdMob）、利用状況の分析（Firebase Analytics）、クラッシュレポート（Firebase Crashlytics）に渡すことはありません。</strong>また、機械学習モデルの学習に使用することもありません。</li>
+  <li><strong>アクセスの取り消し：</strong>本アプリの設定から保存先を切り替えることで連携を解除できます。Googleアカウントの<a href="https://myaccount.google.com/connections" target="_blank">「サードパーティ製アプリとサービス」</a>の画面からアクセス権を取り消すこともできます。</li>
+  <li><strong>第三者のポリシー：</strong>Google ドライブを通じたデータの取り扱いには、Googleのプライバシーポリシー（<a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>）が適用されます。</li>
+</ul>
+
+<h2>10. 外部AIサービスとの連携</h2>
 <p>本アプリは、Claude、ChatGPT、および Gemini の各Webサイトをアプリ内ブラウザ（Custom Tabs）で開く機能を提供しています。この機能の利用にあたっては以下の点にご注意ください。</p>
 <ul>
   <li><strong>データの取り扱い：</strong>本アプリ自体は、これらWebサイトとのやり取りに関するデータ（入力内容、検索履歴等）を収集・保存・送信することはありません。</li>
@@ -211,17 +228,17 @@
   </li>
 </ul>
 
-<h2>10. オプトアウトについて</h2>
+<h2>11. オプトアウトについて</h2>
 <p>ユーザーは以下の方法で、データの収集およびパーソナライズ広告を制限することができます。</p>
 <ul>
   <li><strong>端末の設定：</strong>Android端末の設定（設定 → プライバシー → 広告）から、「広告のパーソナライズをオプトアウトする」または「広告 ID をリセットする」を選択することで、情報の収集を制限できます。</li>
   <li><strong>Googleのポリシー：</strong>Googleによるデータの収集・利用に関する詳細は、<a href="https://policies.google.com/privacy" target="_blank">Googleプライバシーポリシー</a>をご確認ください。</li>
 </ul>
 
-<h2>11. ポリシーの変更</h2>
+<h2>12. ポリシーの変更</h2>
 <p>当社は必要に応じて本ポリシーを変更することがあります。変更後のポリシーはこのページに掲載し、最終更新日を更新します。</p>
 
-<h2>12. お問い合わせ</h2>
+<h2>13. お問い合わせ</h2>
 <p>本ポリシーに関するご質問は下記までご連絡ください。<br>
 メール：<a href="mailto:hiro.studio.support@gmail.com?subject=【MarkZen】プライバシーポリシーよりお問い合わせ">hiro.studio.support@gmail.com</a></p>
 
@@ -232,7 +249,7 @@
 <!-- ============================================================ -->
 <div lang="en">
 <h1>Privacy Policy</h1>
-<span class="updated">Last updated: June 4, 2026</span>
+<span class="updated">Last updated: August 28, 2026</span>
 
 <p>Hiro Studio ("we", "us", or "our") is committed to protecting the privacy of users of the Android application "MarkZen" (the "App"). This Privacy Policy explains how information is handled, taking into account international privacy standards such as GDPR and CCPA.</p>
 
@@ -256,7 +273,7 @@
 </ul>
 
 <h2>2. Information We Do Not Collect</h2>
-<p>We do not transmit or share the following information with our servers or any third party:</p>
+<p>We never transmit the following to our servers, and we never share it with any third party other than the storage location you choose yourself (Dropbox / Google Drive):</p>
 <ul>
   <li>Contents and filenames of files created or edited by users</li>
   <li>Personally Identifiable Information (PII) such as name, email address, phone number, or address</li>
@@ -270,8 +287,13 @@
   <li>To improve App stability and fix bugs</li>
 </ul>
 
-<h2>4. Storage Access</h2>
-<p>The App accesses only the folders and files explicitly selected by the user for the purpose of creating, editing, and managing Markdown files. File content may be stored in an on-device database to support features such as full-text search and edit history, but is never transmitted to our servers or any third party.</p>
+<h2>4. Where Your Data Is Stored</h2>
+<p>The App stores your files in the location you choose: this device, Dropbox, or Google Drive. You select this in the App's settings. <strong>We operate no servers of our own, so your files are never held by us.</strong></p>
+<ul>
+  <li><strong>This device:</strong> The App creates and edits files only inside the folder you explicitly select.</li>
+  <li><strong>Dropbox / Google Drive:</strong> Files are stored in your own account. See sections 8 and 9 for details.</li>
+</ul>
+<p>The App also keeps a full-text search index on the device, along with a local copy of file contents when a cloud location is selected. These exist only on the device and <strong>are deleted when you uninstall the App.</strong> They are never transmitted to our servers or any third party.</p>
 
 <h2>5. Advertising</h2>
 <p>The App uses Google AdMob to display banner and rewarded advertisements. Rewarded ads are shown when using certain features such as PDF export. AdMob may collect information to serve personalized ads based on users' interests. Please refer to Google's advertising policies for more details.</p>
@@ -296,7 +318,19 @@
   <li><strong>Third-Party Policy:</strong> Data handled through Dropbox is subject to Dropbox's Privacy Policy. Please refer to <a href="https://www.dropbox.com/privacy" target="_blank">https://www.dropbox.com/privacy</a> for details.</li>
 </ul>
 
-<h2>9. Integration with External AI Services</h2>
+<h2>9. Google Drive Integration</h2>
+<p>The App offers an optional Google Drive integration feature, which is only activated when explicitly chosen by the user.</p>
+<ul>
+  <li><strong>Authentication:</strong> The App accesses your Google account via OAuth 2.0 authentication.</li>
+  <li><strong>Scope of Access:</strong> The App uses only the <code>drive.file</code> scope. <strong>It can access only the files it creates and the files you explicitly open with the App; it cannot see any other file in your Google Drive.</strong></li>
+  <li><strong>Folder Created:</strong> On first connection, the App creates a folder named "MarkZen" at the root of My Drive and uses it as the workspace.</li>
+  <li><strong>Token Storage:</strong> Authentication tokens are stored in encrypted form on the device only and are never transmitted to our servers.</li>
+  <li><strong>Limited Use:</strong> File contents and filenames obtained from Google Drive are used solely to provide the App's features: viewing, editing, syncing, and searching Markdown files. <strong>They are never passed to advertising (AdMob), usage analysis (Firebase Analytics), or crash reporting (Firebase Crashlytics).</strong> They are not used to train machine learning models.</li>
+  <li><strong>Revoking Access:</strong> You can disconnect by switching the storage location in the App's settings. You may also revoke access from your Google Account's <a href="https://myaccount.google.com/connections" target="_blank">"Third-party apps &amp; services"</a> page.</li>
+  <li><strong>Third-Party Policy:</strong> Data handled through Google Drive is subject to Google's Privacy Policy (<a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>).</li>
+</ul>
+
+<h2>10. Integration with External AI Services</h2>
 <p>The App provides functionality to open Claude, ChatGPT, and Gemini websites using an in-app browser (Custom Tabs). Please note the following regarding this feature:</p>
 <ul>
   <li><strong>Data Handling:</strong> The App itself does not collect, store, or transmit any data related to your interactions with these websites (such as input content or search history).</li>
@@ -310,17 +344,17 @@
   </li>
 </ul>
 
-<h2>10. Opt-out Options</h2>
+<h2>11. Opt-out Options</h2>
 <p>You can limit data collection and personalized advertising through the following methods:</p>
 <ul>
   <li><strong>Device Settings:</strong> You can limit information collection by adjusting your Android device settings (Settings → Privacy → Ads) and selecting "Opt out of Ads Personalization" or "Reset advertising ID".</li>
   <li><strong>Google's Policy:</strong> For more details on how Google collects and uses data, please refer to the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</li>
 </ul>
 
-<h2>11. Changes to This Policy</h2>
+<h2>12. Changes to This Policy</h2>
 <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last updated" date.</p>
 
-<h2>12. Contact Us</h2>
+<h2>13. Contact Us</h2>
 <p>If you have any questions about this Privacy Policy, please contact us at:<br>
 Email: <a href="mailto:hiro.studio.support@gmail.com?subject=[MarkZen]%20Inquiry%20from%20Privacy%20Policy">hiro.studio.support@gmail.com</a></p>
 
