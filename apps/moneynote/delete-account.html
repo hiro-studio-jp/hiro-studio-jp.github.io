@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoneyNote アカウント・データの削除 / Account and Data Deletion</title>
+  <style>
+    :lang(en) [lang="ja"] { display: none !important; }
+    :lang(ja) [lang="en"] { display: none !important; }
+  </style>
+  <script>
+    (function() {
+      const savedLang = localStorage.getItem('lang') || 'ja';
+      document.documentElement.lang = savedLang;
+    })();
+
+    function toggleLangMenu(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('lang-menu');
+      const isVisible = menu.style.display === 'block';
+      menu.style.display = isVisible ? 'none' : 'block';
+    }
+
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      localStorage.setItem('lang', lang);
+      const menu = document.getElementById('lang-menu');
+      if (menu) menu.style.display = 'none';
+    }
+
+    window.onclick = function() {
+      const menu = document.getElementById('lang-menu');
+      if (menu) menu.style.display = 'none';
+    };
+  </script>
+  <style>
+    .lang-picker-container {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+    }
+    .lang-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      display: none;
+      min-width: 140px;
+      margin-top: 12px;
+      padding: 8px 0;
+      list-style: none;
+      border: 1px solid rgba(0,0,0,0.05);
+      animation: fadeIn 0.2s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .lang-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #1a1a2e;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: background 0.15s, color 0.15s;
+      text-align: left;
+    }
+    .lang-menu a:hover {
+      background: #f4f5ff;
+      color: #6c63ff;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 50%;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lang-btn:hover {
+      background: rgba(0,0,0,0.05);
+    }
+    body { font-family: sans-serif; line-height: 1.7; margin: 24px; max-width: 900px; color: #333; position: relative; }
+    h1 { border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+    h2 { margin-top: 30px; border-left: 5px solid #4CAF50; padding-left: 10px; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 5px; }
+    a { color: #1a73e8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ol { padding-left: 22px; }
+    ol li { margin-bottom: 8px; }
+    .box { background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+    .app { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="lang-picker-container">
+    <button onclick="toggleLangMenu(event)" class="lang-btn" title="Select Language">🌐</button>
+    <div id="lang-menu" class="lang-menu">
+      <a href="javascript:void(0)" onclick="setLang('ja')">日本語</a>
+      <a href="javascript:void(0)" onclick="setLang('en')">English</a>
+    </div>
+  </div>
+
+  <div lang="ja">
+    <h1>アカウント・データの削除について</h1>
+    <p>対象アプリ: <span class="app">MoneyNote</span>（家計簿アプリ / 提供: Hiro Studio）</p>
+    <p>MoneyNote のアカウントと、それに紐づくすべてのデータの削除方法を説明します。削除方法は2つあり、どちらでも同じ範囲のデータが削除されます。</p>
+
+    <h2>方法1: アプリ内から削除する（推奨・即時）</h2>
+    <ol>
+      <li>MoneyNote を起動し、ログインします</li>
+      <li>下部タブの <strong>マイページ</strong> を開きます</li>
+      <li>画面下部の <strong>「アカウントを削除」</strong> を選択します</li>
+      <li>確認欄に <strong>「アカウントを削除します」</strong> と入力します</li>
+      <li><strong>「完全に削除する」</strong> を選択します</li>
+    </ol>
+    <p>この操作は即時に反映され、取り消すことはできません。</p>
+
+    <h2>方法2: ウェブから削除を依頼する</h2>
+    <p>アプリを削除してしまった場合や、ログインできない場合は、メールで削除を依頼できます。</p>
+    <div class="box">
+      <p>宛先: <a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】アカウント削除のご依頼">hiro.studio.support@gmail.com</a></p>
+      <p>件名: 【MoneyNote】アカウント削除のご依頼</p>
+      <p>本文に記載する内容:</p>
+      <ul>
+        <li>MoneyNote に登録しているメールアドレス</li>
+        <li>アカウントの削除を希望する旨</li>
+      </ul>
+    </div>
+    <p>ご依頼を確認後、<strong>7営業日以内</strong>に削除し、完了をメールでお知らせします。なりすましを防ぐため、登録されているメールアドレスからご連絡ください。</p>
+
+    <h2>削除されるデータ</h2>
+    <p>アカウントを削除すると、以下のすべてが完全に削除されます。<strong>保持期間を設けた保存や、バックアップとしての保管は行いません。</strong></p>
+    <ul>
+      <li>アカウント情報（メールアドレス、パスワード）</li>
+      <li>取引データ（収入・支出の記録、金額、日付、メモ）</li>
+      <li>カテゴリおよびタグ</li>
+      <li>予算設定</li>
+      <li>アプリ設定（表示言語・通貨などの設定値）</li>
+    </ul>
+    <p>削除後にデータを復元することはできません。必要なデータは、削除前にアプリの「インポート / エクスポート」画面から CSV として書き出して保管してください。</p>
+
+    <h2>削除されないもの</h2>
+    <p>ありません。上記のとおり、MoneyNote が保存しているユーザーデータはすべて削除されます。</p>
+    <p>なお、ユーザーご自身が端末や外部ストレージに書き出した CSV ファイルは、本サービス提供者の管理外のため削除の対象になりません。必要に応じてご自身で削除してください。</p>
+
+    <h2>関連ページ</h2>
+    <ul>
+      <li><a href="privacy.html">プライバシーポリシー</a></li>
+      <li><a href="terms.html">利用規約</a></li>
+      <li><a href="index.html">MoneyNote について</a></li>
+    </ul>
+
+    <p>最終更新日: 2026年9月9日</p>
+  </div>
+
+  <div lang="en">
+    <h1>Account and Data Deletion</h1>
+    <p>App: <span class="app">MoneyNote</span> (household budgeting app / published by Hiro Studio)</p>
+    <p>This page explains how to delete your MoneyNote account and all data associated with it. There are two ways to do this, and both delete exactly the same data.</p>
+
+    <h2>Option 1: Delete from within the app (recommended, immediate)</h2>
+    <ol>
+      <li>Open MoneyNote and sign in</li>
+      <li>Open <strong>My Page</strong> from the bottom tab bar</li>
+      <li>Select <strong>"Delete Account"</strong> at the bottom of the screen</li>
+      <li>Type <strong>"delete my account"</strong> in the confirmation field</li>
+      <li>Select <strong>"Permanently Delete"</strong></li>
+    </ol>
+    <p>This takes effect immediately and cannot be undone.</p>
+
+    <h2>Option 2: Request deletion via the web</h2>
+    <p>If you have already uninstalled the app or cannot sign in, you can request deletion by email.</p>
+    <div class="box">
+      <p>To: <a href="mailto:hiro.studio.support@gmail.com?subject=[MoneyNote]%20Account%20deletion%20request">hiro.studio.support@gmail.com</a></p>
+      <p>Subject: [MoneyNote] Account deletion request</p>
+      <p>Please include:</p>
+      <ul>
+        <li>The email address registered with MoneyNote</li>
+        <li>A statement that you want your account deleted</li>
+      </ul>
+    </div>
+    <p>Once we confirm your request, we will delete your account <strong>within 7 business days</strong> and notify you by email. To prevent impersonation, please send the request from your registered email address.</p>
+
+    <h2>Data that will be deleted</h2>
+    <p>Deleting your account permanently removes all of the following. <strong>We do not retain any of it for a retention period, nor keep it as a backup.</strong></p>
+    <ul>
+      <li>Account information (email address, password)</li>
+      <li>Transactions (income and expense records, amounts, dates, notes)</li>
+      <li>Categories and tags</li>
+      <li>Budget settings</li>
+      <li>App settings (display language, currency, and other preferences)</li>
+    </ul>
+    <p>Data cannot be restored after deletion. If you need to keep any of it, export it as CSV from the "Import / Export" screen in the app before deleting your account.</p>
+
+    <h2>Data that will not be deleted</h2>
+    <p>None. As listed above, all user data stored by MoneyNote is deleted.</p>
+    <p>Note that CSV files you exported yourself to your device or external storage are outside the Service Provider's control and are therefore not covered by this deletion. Please delete those yourself if needed.</p>
+
+    <h2>Related pages</h2>
+    <ul>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="terms.html">Terms of Service</a></li>
+      <li><a href="index.html">About MoneyNote</a></li>
+    </ul>
+
+    <p>Last updated: September 9, 2026</p>
+  </div>
+</body>
+</html>

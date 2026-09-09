@@ -112,13 +112,14 @@
     <h2>1. 取得する情報</h2>
     <ul>
       <li><strong>認証情報</strong>: メールアドレス、パスワード（Supabaseにより暗号化保存）</li>
-      <li><strong>家計簿データ</strong>: 収入・支出情報、分類、メモ等</li>
-      <li><strong>利用状況データ</strong>: エラー情報等の匿名化技術データ</li>
+      <li><strong>家計簿データ</strong>: 収入・支出情報、カテゴリ、タグ、メモ、予算設定</li>
+      <li><strong>アプリ設定</strong>: 表示言語・通貨などの設定値（端末内および Supabase に保存）</li>
       <li><strong>広告用識別子</strong>: 広告ID（Android 広告 ID）等（次項の広告配信目的）</li>
     </ul>
+    <p>本アプリは、アプリの利用状況の解析やクラッシュログの収集を行っていません。</p>
 
     <h2>2. 広告配信について</h2>
-    <p>本アプリでは、広告配信を目的として <strong>Google AdMob</strong> を利用しています。Google AdMobは、ユーザーを識別するための情報（広告ID等）を自動的に収集する場合があります。これらの情報は、パーソナライズされた広告の表示や広告の効果測定、分析のために利用されます。情報の取り扱いについては、Googleのプライバシーポリシーをご確認ください。</p>
+    <p>本アプリでは、広告配信を目的として <strong>Google AdMob</strong> を利用しています。本アプリは<strong>パーソナライズされていない広告（非パーソナライズ広告）のみ</strong>をリクエストする設定で配信しています。ただし Google AdMob は、広告の配信、不正防止、および効果測定のために、ユーザーを識別するための情報（広告ID等）を自動的に収集する場合があります。情報の取り扱いについては、Googleのプライバシーポリシーをご確認ください。</p>
     <ul>
       <li><a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener noreferrer">Google ポリシーと規約（広告）</a></li>
     </ul>
@@ -130,31 +131,33 @@
     <ul>
       <li>本アプリの提供・維持</li>
       <li>クラウド機能によるデータ同期・バックアップ（Supabase利用）</li>
-      <li>品質改善、障害解析</li>
-      <li>広告の配信および最適化</li>
+      <li>広告の配信</li>
       <li>お問い合わせ対応</li>
     </ul>
 
     <h2>5. データ保存と管理</h2>
-    <p>取得した情報は <strong>Supabase</strong> を利用し、安全に管理されます。</p>
+    <p>取得した情報は <strong>Supabase</strong> を利用し、安全に管理されます。通信はすべて暗号化（HTTPS）されています。</p>
+    <p>アプリの設定値は、上記に加えて端末内にも保存されます。また、CSVのインポート / エクスポート機能を利用する際に、端末のストレージへアクセスします。読み込み・書き出しの対象はユーザーが選択したファイルに限られ、その内容が本サービス提供者に送信されることはありません。</p>
+    <p><strong>保存期間</strong>: アカウントが削除されるまで保存されます。保持期間を設けた自動削除は行っていません。</p>
 
     <h2>6. 第三者提供</h2>
     <p>法令に基づく場合を除き、第三者提供は行いません。</p>
 
-    <h2>7. データの削除について</h2>
+    <h2 id="data-deletion">7. データの削除について</h2>
     <p>ユーザーは以下の方法でデータを削除できます。</p>
     <ul>
       <li><strong>個別データの削除</strong>: アプリ内の記帳一覧画面から、各取引データを個別に削除できます。</li>
       <li><strong>全データの一括削除</strong>: アプリ内のインポート / エクスポート画面から、すべての取引データを一括削除できます。</li>
-      <li><strong>アカウントの削除</strong>: アプリ内のメニュー画面 →「アカウントを削除」から削除できます。アカウントを削除すると、メールアドレス・パスワードを含むすべての家計データが完全に消去され、復元できません。</li>
+      <li><strong>アカウントの削除</strong>: アプリ内の <strong>マイページ → 「アカウントを削除」</strong> から削除できます。確認欄に「アカウントを削除します」と入力し、「完全に削除する」を選択すると実行されます。アカウントを削除すると、メールアドレス・パスワード、取引データ、カテゴリ、タグ、予算設定、アプリ設定のすべてが完全に消去され、復元できません。</li>
     </ul>
+    <p>アプリを利用できない場合は、ウェブから削除を依頼することもできます。手順は <a href="delete-account.html">アカウント・データの削除について</a> をご覧ください。</p>
 
     <h2>8. お問い合わせ</h2>
     <p><a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】プライバシーポリシーよりお問い合わせ">hiro.studio.support@gmail.com</a></p>
 
     <h2>9. 改定</h2>
     <p>必要に応じて本ポリシーを改定し、本ページにて公表します。</p>
-    <p>最終更新日: 2026年6月17日</p>
+    <p>最終更新日: 2026年9月9日</p>
   </div>
 
   <div lang="en">
@@ -164,13 +167,14 @@
     <h2>1. Information We Collect</h2>
     <ul>
       <li><strong>Authentication Information</strong>: Email address, password (encrypted and stored via Supabase)</li>
-      <li><strong>Household Account Data</strong>: Income/expense information, categories, notes, etc.</li>
-      <li><strong>Usage Data</strong>: Anonymized technical data such as error information</li>
+      <li><strong>Household Account Data</strong>: Income/expense information, categories, tags, notes, budget settings</li>
+      <li><strong>App Settings</strong>: Settings such as display language and currency (stored on your device and in Supabase)</li>
       <li><strong>Advertising Identifiers</strong>: Advertising ID (Android Advertising ID), etc. (for advertising purposes described below)</li>
     </ul>
+    <p>This App does not collect usage analytics or crash logs.</p>
 
     <h2>2. Advertising</h2>
-    <p>This App uses <strong>Google AdMob</strong> for the purpose of delivering advertisements. Google AdMob may automatically collect information to identify users (such as advertising IDs). This information is used for displaying personalized ads, measuring ad performance, and analysis. Please refer to Google's Privacy Policy regarding the handling of this information.</p>
+    <p>This App uses <strong>Google AdMob</strong> for the purpose of delivering advertisements. This App is configured to request <strong>non-personalized ads only</strong>. However, Google AdMob may automatically collect information to identify users (such as advertising IDs) for ad delivery, fraud prevention, and performance measurement. Please refer to Google's Privacy Policy regarding the handling of this information.</p>
     <ul>
       <li><a href="https://policies.google.com/technologies/ads?hl=en" target="_blank" rel="noopener noreferrer">Google Policies & Terms (Advertising)</a></li>
     </ul>
@@ -182,31 +186,33 @@
     <ul>
       <li>Provision and maintenance of this App</li>
       <li>Data synchronization and backup via cloud features (using Supabase)</li>
-      <li>Quality improvement and fault analysis</li>
-      <li>Delivery and optimization of advertisements</li>
+      <li>Delivery of advertisements</li>
       <li>Responding to inquiries</li>
     </ul>
 
     <h2>5. Data Storage and Management</h2>
-    <p>The collected information is securely managed using <strong>Supabase</strong>.</p>
+    <p>The collected information is securely managed using <strong>Supabase</strong>. All communication is encrypted (HTTPS).</p>
+    <p>App settings are also stored on your device. In addition, the App accesses your device storage when you use the CSV import / export feature. Only the file you select is read or written, and its contents are never transmitted to the Service Provider.</p>
+    <p><strong>Retention period</strong>: Data is retained until your account is deleted. We do not perform automatic deletion after a fixed retention period.</p>
 
     <h2>6. Provision to Third Parties</h2>
     <p>We will not provide your information to third parties unless required by law.</p>
 
-    <h2>7. Data Deletion</h2>
+    <h2 id="data-deletion-en">7. Data Deletion</h2>
     <p>Users can delete their data in the following ways:</p>
     <ul>
       <li><strong>Delete individual transactions</strong>: Each transaction can be deleted individually from the transaction list screen within the app.</li>
       <li><strong>Delete all data at once</strong>: All transaction data can be deleted in bulk from the Import / Export screen within the app.</li>
-      <li><strong>Delete account</strong>: You can delete your account from the Menu screen within the app → "Delete Account". Deleting your account will permanently remove all financial data including your email address and password. This action cannot be undone.</li>
+      <li><strong>Delete account</strong>: You can delete your account from <strong>My Page → "Delete Account"</strong> within the app. Type "delete my account" in the confirmation field and select "Permanently Delete" to proceed. Deleting your account permanently removes your email address, password, transactions, categories, tags, budget settings, and app settings. This action cannot be undone.</li>
     </ul>
+    <p>If you are unable to use the app, you can also request deletion via the web. See <a href="delete-account.html">Account and Data Deletion</a> for details.</p>
 
     <h2>8. Contact Us</h2>
     <p><a href="mailto:hiro.studio.support@gmail.com?subject=[MoneyNote]%20Inquiry%20from%20Privacy%20Policy">hiro.studio.support@gmail.com</a></p>
 
     <h2>9. Revisions</h2>
     <p>We will revise this policy as necessary and publish the updates on this page.</p>
-    <p>Last updated: June 17, 2026</p>
+    <p>Last updated: September 9, 2026</p>
   </div>
 </body>
 </html>
