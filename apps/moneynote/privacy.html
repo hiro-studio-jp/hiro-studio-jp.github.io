@@ -113,13 +113,21 @@
     <ul>
       <li><strong>認証情報</strong>: メールアドレス、パスワード（Supabaseにより暗号化保存）。Google アカウントでログインする場合はパスワードを取得せず、代わりに Google から提供される情報を取得します（第3項参照）</li>
       <li><strong>家計簿データ</strong>: 収入・支出情報、カテゴリ、タグ、メモ、予算設定</li>
-      <li><strong>アプリ設定</strong>: 表示言語・通貨などの設定値（端末内および Supabase に保存）</li>
+      <li><strong>アプリ設定</strong>: 表示言語・通貨・CSVの文字コードなどの設定値（端末内および Supabase に保存）</li>
       <li><strong>広告用識別子</strong>: 広告ID（Android 広告 ID）等（次項の広告配信目的）</li>
+      <li><strong>アプリのバージョン情報</strong>: 端末にインストールされている本アプリのバージョン（第4項のアプリ更新確認の目的で、Google Play に照会する際に使用）</li>
     </ul>
-    <p>本アプリは、アプリの利用状況の解析やクラッシュログの収集を行っていません。</p>
+    <p>本アプリは、アプリの利用状況の解析やクラッシュログの収集を行っていません。また、連絡先、位置情報、写真、通話履歴、端末内のファイル一覧などの情報は取得しません。</p>
 
     <h2>2. 広告配信について</h2>
     <p>本アプリでは、広告配信を目的として <strong>Google AdMob</strong> を利用しています。本アプリは<strong>パーソナライズされていない広告（非パーソナライズ広告）のみ</strong>をリクエストする設定で配信しています。ただし Google AdMob は、広告の配信、不正防止、および効果測定のために、ユーザーを識別するための情報（広告ID等）を自動的に収集する場合があります。情報の取り扱いについては、Googleのプライバシーポリシーをご確認ください。</p>
+    <p>本アプリで表示される広告は、以下の3種類です。</p>
+    <ul>
+      <li><strong>バナー広告</strong>: ログイン後、画面下部に表示されます。</li>
+      <li><strong>インタースティシャル広告（全画面）</strong>: ダッシュボードの操作時に表示されることがあります。表示は<strong>3時間に1回まで</strong>に制限しています。</li>
+      <li><strong>リワード広告（動画）</strong>: CSV の書き出しを行う前に表示されます。<strong>再生の前に確認のダイアログを表示し、同意をいただいた場合にのみ再生します</strong>。同意しない場合、広告は再生されず、CSV の書き出しも行われません。</li>
+    </ul>
+    <p>広告の表示にあたり、本サービス提供者が家計簿データ（収入・支出の金額、項目、メモ等）を広告事業者に提供することはありません。</p>
     <ul>
       <li><a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener noreferrer">Google ポリシーと規約（広告）</a></li>
     </ul>
@@ -138,26 +146,38 @@
     </ul>
     <p>すでにメールアドレスとパスワードで登録されているアカウントと同一のメールアドレスで Google ログインを行った場合、同一のアカウントとして扱われ、登録済みのデータを引き続きご利用いただけます。</p>
 
-    <h2>4. 取得方法</h2>
-    <p>ユーザー入力またはアプリ利用に伴う自動収集（広告モジュール等）により取得します。Google アカウントによるログインを選択した場合は、前項に記載の情報を Google から取得します。</p>
+    <h2>4. アプリの更新確認について</h2>
+    <p>本アプリは起動時に、新しいバージョンが Google Play で公開されていないかを確認し、公開されていれば Google 純正の更新シートを表示します。確認とダウンロードは Google Play が行い、この際に端末にインストールされている本アプリのバージョン情報が Google Play に送信されます。本サービス提供者がこの情報を取得・保存することはありません。この機能は、Google Play 経由でインストールされた場合にのみ動作します。</p>
 
-    <h2>5. 利用目的</h2>
+    <h2>5. 取得方法</h2>
+    <p>ユーザー入力またはアプリ利用に伴う自動収集（広告モジュール等）により取得します。Google アカウントによるログインを選択した場合は、第3項に記載の情報を Google から取得します。</p>
+
+    <h2>6. 利用目的</h2>
     <ul>
       <li>本アプリの提供・維持</li>
       <li>クラウド機能によるデータ同期・バックアップ（Supabase利用）</li>
       <li>広告の配信</li>
+      <li>アプリの更新確認</li>
       <li>お問い合わせ対応</li>
     </ul>
 
-    <h2>6. データ保存と管理</h2>
+    <h2>7. データ保存と管理</h2>
     <p>取得した情報は <strong>Supabase</strong> を利用し、安全に管理されます。通信はすべて暗号化（HTTPS）されています。</p>
-    <p>アプリの設定値は、上記に加えて端末内にも保存されます。また、CSVのインポート / エクスポート機能を利用する際に、端末のストレージへアクセスします。読み込み・書き出しの対象はユーザーが選択したファイルに限られ、その内容が本サービス提供者に送信されることはありません。</p>
+    <p>上記に加えて、以下の情報が端末内にも保存されます。いずれもアプリをアンインストールすると削除されます。</p>
+    <ul>
+      <li>ログイン状態を保持するための認証トークン</li>
+      <li>アプリの設定値（表示言語・通貨・CSVの文字コード）</li>
+      <li>表示状態の記憶（ダッシュボードで最後に開いていたタブなど）</li>
+      <li>グラフの表示を速くするための一時データ（支出の予測値。最大24時間で再取得されます）</li>
+      <li>広告の表示間隔を制御するための、前回の全画面広告の表示時刻</li>
+    </ul>
+    <p>また、CSVのインポート / エクスポート機能を利用する際に、端末のストレージへアクセスします。読み込み・書き出しの対象はユーザーが選択したファイルに限られ、その内容が本サービス提供者に送信されることはありません。</p>
     <p><strong>保存期間</strong>: アカウントが削除されるまで保存されます。保持期間を設けた自動削除は行っていません。</p>
 
-    <h2>7. 第三者提供</h2>
+    <h2>8. 第三者提供</h2>
     <p>法令に基づく場合を除き、第三者提供は行いません。</p>
 
-    <h2 id="data-deletion">8. データの削除について</h2>
+    <h2 id="data-deletion">9. データの削除について</h2>
     <p>ユーザーは以下の方法でデータを削除できます。</p>
     <ul>
       <li><strong>個別データの削除</strong>: アプリ内の記帳一覧画面から、各取引データを個別に削除できます。</li>
@@ -166,12 +186,12 @@
     </ul>
     <p>アプリを利用できない場合は、ウェブから削除を依頼することもできます。手順は <a href="delete-account.html">アカウント・データの削除について</a> をご覧ください。</p>
 
-    <h2>9. お問い合わせ</h2>
+    <h2>10. お問い合わせ</h2>
     <p><a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】プライバシーポリシーよりお問い合わせ">hiro.studio.support@gmail.com</a></p>
 
-    <h2>10. 改定</h2>
+    <h2>11. 改定</h2>
     <p>必要に応じて本ポリシーを改定し、本ページにて公表します。</p>
-    <p>最終更新日: 2026年9月24日</p>
+    <p>最終更新日: 2026年10月19日</p>
   </div>
 
   <div lang="en">
@@ -182,13 +202,21 @@
     <ul>
       <li><strong>Authentication Information</strong>: Email address, password (encrypted and stored via Supabase). If you sign in with a Google account, we do not obtain a password; instead we receive information provided by Google (see Section 3)</li>
       <li><strong>Household Account Data</strong>: Income/expense information, categories, tags, notes, budget settings</li>
-      <li><strong>App Settings</strong>: Settings such as display language and currency (stored on your device and in Supabase)</li>
+      <li><strong>App Settings</strong>: Settings such as display language, currency and CSV encoding (stored on your device and in Supabase)</li>
       <li><strong>Advertising Identifiers</strong>: Advertising ID (Android Advertising ID), etc. (for advertising purposes described below)</li>
+      <li><strong>App version</strong>: The version of this App installed on your device (used when checking Google Play for updates, as described in Section 4)</li>
     </ul>
-    <p>This App does not collect usage analytics or crash logs.</p>
+    <p>This App does not collect usage analytics or crash logs. It also does not collect your contacts, location, photos, call history, or a list of the files on your device.</p>
 
     <h2>2. Advertising</h2>
     <p>This App uses <strong>Google AdMob</strong> for the purpose of delivering advertisements. This App is configured to request <strong>non-personalized ads only</strong>. However, Google AdMob may automatically collect information to identify users (such as advertising IDs) for ad delivery, fraud prevention, and performance measurement. Please refer to Google's Privacy Policy regarding the handling of this information.</p>
+    <p>Three kinds of advertisements are shown in this App:</p>
+    <ul>
+      <li><strong>Banner ads</strong>: Shown at the bottom of the screen once you are signed in.</li>
+      <li><strong>Interstitial (full-screen) ads</strong>: May appear while you use the Dashboard. These are limited to <strong>once every three hours</strong>.</li>
+      <li><strong>Rewarded (video) ads</strong>: Shown before a CSV export. <strong>A confirmation dialog is shown first, and the ad plays only if you agree to it.</strong> If you do not agree, no ad is played and the CSV is not exported.</li>
+    </ul>
+    <p>The Service Provider does not provide your household account data (amounts, categories, notes, and so on) to advertising providers.</p>
     <ul>
       <li><a href="https://policies.google.com/technologies/ads?hl=en" target="_blank" rel="noopener noreferrer">Google Policies & Terms (Advertising)</a></li>
     </ul>
@@ -207,26 +235,38 @@
     </ul>
     <p>If you sign in with Google using the same email address as an existing account registered with an email address and password, both are treated as the same account, and you can continue to use your existing data.</p>
 
-    <h2>4. Collection Methods</h2>
-    <p>Information is obtained through user input or automatic collection associated with the use of the App (such as advertising modules). If you choose to sign in with a Google account, the information described in the previous section is obtained from Google.</p>
+    <h2>4. Checking for App Updates</h2>
+    <p>On launch, this App checks whether a newer version has been published on Google Play, and if so, shows Google's own update sheet. The check and the download are carried out by Google Play, and the version of this App installed on your device is sent to Google Play as part of that check. The Service Provider neither obtains nor stores this information. This feature only works when the App was installed through Google Play.</p>
 
-    <h2>5. Purpose of Use</h2>
+    <h2>5. Collection Methods</h2>
+    <p>Information is obtained through user input or automatic collection associated with the use of the App (such as advertising modules). If you choose to sign in with a Google account, the information described in Section 3 is obtained from Google.</p>
+
+    <h2>6. Purpose of Use</h2>
     <ul>
       <li>Provision and maintenance of this App</li>
       <li>Data synchronization and backup via cloud features (using Supabase)</li>
       <li>Delivery of advertisements</li>
+      <li>Checking for app updates</li>
       <li>Responding to inquiries</li>
     </ul>
 
-    <h2>6. Data Storage and Management</h2>
+    <h2>7. Data Storage and Management</h2>
     <p>The collected information is securely managed using <strong>Supabase</strong>. All communication is encrypted (HTTPS).</p>
-    <p>App settings are also stored on your device. In addition, the App accesses your device storage when you use the CSV import / export feature. Only the file you select is read or written, and its contents are never transmitted to the Service Provider.</p>
+    <p>In addition to the above, the following is stored on your device. All of it is removed when you uninstall the App.</p>
+    <ul>
+      <li>An authentication token that keeps you signed in</li>
+      <li>App settings (display language, currency, CSV encoding)</li>
+      <li>Interface state, such as the Dashboard tab you last had open</li>
+      <li>Temporary data used to draw charts faster (your spending forecast, refetched at least every 24 hours)</li>
+      <li>The time the last full-screen ad was shown, used to limit how often they appear</li>
+    </ul>
+    <p>In addition, the App accesses your device storage when you use the CSV import / export feature. Only the file you select is read or written, and its contents are never transmitted to the Service Provider.</p>
     <p><strong>Retention period</strong>: Data is retained until your account is deleted. We do not perform automatic deletion after a fixed retention period.</p>
 
-    <h2>7. Provision to Third Parties</h2>
+    <h2>8. Provision to Third Parties</h2>
     <p>We will not provide your information to third parties unless required by law.</p>
 
-    <h2 id="data-deletion-en">8. Data Deletion</h2>
+    <h2 id="data-deletion-en">9. Data Deletion</h2>
     <p>Users can delete their data in the following ways:</p>
     <ul>
       <li><strong>Delete individual transactions</strong>: Each transaction can be deleted individually from the transaction list screen within the app.</li>
@@ -235,12 +275,12 @@
     </ul>
     <p>If you are unable to use the app, you can also request deletion via the web. See <a href="delete-account.html">Account and Data Deletion</a> for details.</p>
 
-    <h2>9. Contact Us</h2>
+    <h2>10. Contact Us</h2>
     <p><a href="mailto:hiro.studio.support@gmail.com?subject=[MoneyNote]%20Inquiry%20from%20Privacy%20Policy">hiro.studio.support@gmail.com</a></p>
 
-    <h2>10. Revisions</h2>
+    <h2>11. Revisions</h2>
     <p>We will revise this policy as necessary and publish the updates on this page.</p>
-    <p>Last updated: September 24, 2026</p>
+    <p>Last updated: October 19, 2026</p>
   </div>
 </body>
 </html>

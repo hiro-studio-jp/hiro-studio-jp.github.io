@@ -116,14 +116,19 @@
 
     /* ── Hero ── */
     .hero {
-      background: linear-gradient(135deg, #1b4f3a 0%, #2d7a57 100%);
+      background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
       color: #fff;
       padding: 56px 24px 48px;
       text-align: center;
     }
     .hero-icon {
-      font-size: 4rem;
-      margin-bottom: 16px;
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 16px;
+      border-radius: 22px;
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+      display: block;
     }
     .hero h1 {
       font-size: 2.2rem;
@@ -137,7 +142,7 @@
     }
     .btn-store {
       display: inline-block;
-      background: #4CAF50;
+      background: #059669;
       color: #fff;
       text-decoration: none;
       padding: 12px 28px;
@@ -146,7 +151,12 @@
       font-weight: 600;
       transition: background 0.15s;
     }
-    .btn-store:hover { background: #388e3c; }
+    .btn-store:hover { background: #047857; }
+    .hero .note {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: #8fc4ab;
+    }
 
     /* ── Main ── */
     main {
@@ -186,6 +196,61 @@
     .feature h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
     .feature p { font-size: 0.85rem; color: #555; line-height: 1.5; }
 
+    /* ── Screenshots ── */
+    .shots {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .shot {
+      flex: 0 0 auto;
+      width: 200px;
+      scroll-snap-align: start;
+    }
+    .shot img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      border: 1px solid #e3e6e3;
+      background: #F0EEE9;
+    }
+    .shot figcaption {
+      margin-top: 8px;
+      font-size: 0.82rem;
+      color: #666;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ── Spec list ── */
+    .spec {
+      list-style: none;
+      padding: 0;
+    }
+    .spec li {
+      font-size: 0.92rem;
+      color: #444;
+      line-height: 1.7;
+      padding: 10px 0 10px 20px;
+      border-bottom: 1px solid #eef0ee;
+      position: relative;
+    }
+    .spec li:last-child { border-bottom: none; }
+    .spec li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 1.05em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #059669;
+    }
+
     /* ── Description ── */
     .card p {
       font-size: 0.97rem;
@@ -202,17 +267,17 @@
       flex-wrap: wrap;
     }
     .legal-links a {
-      color: #4CAF50;
+      color: #059669;
       text-decoration: none;
       font-size: 0.95rem;
       font-weight: 600;
       padding: 10px 20px;
-      border: 2px solid #4CAF50;
+      border: 2px solid #059669;
       border-radius: 8px;
       transition: background 0.15s, color 0.15s;
     }
     .legal-links a:hover {
-      background: #4CAF50;
+      background: #059669;
       color: #fff;
     }
 
@@ -223,7 +288,7 @@
       color: #999;
       font-size: 0.85rem;
     }
-    footer a { color: #4CAF50; text-decoration: none; }
+    footer a { color: #059669; text-decoration: none; }
   </style>
 </head>
 <body>
@@ -240,17 +305,44 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-icon">💰</div>
+  <img class="hero-icon" src="img/icon.png" width="96" height="96" alt="MoneyNote">
   <h1>MoneyNote</h1>
-  <p class="tagline" lang="ja">シンプルで使いやすい家計簿アプリ</p>
-  <p class="tagline" lang="en">Simple and easy-to-use budget tracker for Android</p>
-  <!-- Play Store公開後に有効化
-  <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.hirostudio.moneynote" target="_blank" lang="ja">Google Play で入手</a>
-  <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.hirostudio.moneynote" target="_blank" lang="en">Get it on Google Play</a>
-  -->
+  <p class="tagline" lang="ja">収支を数タップで記帳できる、シンプルな家計簿アプリ</p>
+  <p class="tagline" lang="en">A simple budget tracker — log income and expenses in a few taps</p>
+  <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.hirostudio.moneynote" target="_blank" rel="noopener noreferrer" lang="ja">Google Play で入手</a>
+  <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.hirostudio.moneynote" target="_blank" rel="noopener noreferrer" lang="en">Get it on Google Play</a>
+  <p class="note" lang="ja">Android 7.0 以降 / 無料（広告あり）</p>
+  <p class="note" lang="en">Android 7.0 and later / Free, with ads</p>
 </div>
 
 <main>
+
+  <!-- スクリーンショット -->
+  <div class="card">
+    <h2>Screens</h2>
+    <div class="shots">
+      <figure class="shot">
+        <img src="img/01-home.png" width="1080" height="1920" alt="ホーム画面" loading="lazy">
+        <figcaption lang="ja">ホーム<br>当月の収支とドーナツグラフ</figcaption>
+        <figcaption lang="en">Home<br>Monthly balance and donut chart</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/02-entry.png" width="1080" height="1920" alt="記帳画面" loading="lazy">
+        <figcaption lang="ja">記帳<br>金額・日付・項目・メモ</figcaption>
+        <figcaption lang="en">Entry<br>Amount, date, category, memo</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/03-ledger.png" width="1080" height="1920" alt="家計簿画面" loading="lazy">
+        <figcaption lang="ja">家計簿<br>日付ごとの一覧</figcaption>
+        <figcaption lang="en">Ledger<br>Records day by day</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="img/04-dashboard.png" width="1080" height="1920" alt="ダッシュボード画面" loading="lazy">
+        <figcaption lang="ja">ダッシュボード<br>予算の進捗と支出の予測</figcaption>
+        <figcaption lang="en">Dashboard<br>Budget progress and forecast</figcaption>
+      </figure>
+    </div>
+  </div>
 
   <!-- 機能紹介 -->
   <div class="card">
@@ -258,45 +350,73 @@
     <div class="features">
       <div class="feature">
         <div class="icon">📝</div>
-        <h3 lang="ja">収支の記録</h3>
-        <h3 lang="en">Transaction Recording</h3>
-        <p lang="ja">収入・支出をすばやく入力。タグで分類して管理できます。</p>
-        <p lang="en">Quickly log income and expenses. Organize with tags for easy management.</p>
+        <h3 lang="ja">すばやい記帳</h3>
+        <h3 lang="en">Quick entry</h3>
+        <p lang="ja">収入と支出を切り替えて、金額・日付・項目・メモを入力するだけ。入力内容はホームと家計簿にすぐ反映されます。</p>
+        <p lang="en">Switch between income and expense, then enter the amount, date, category and a note. Entries appear on Home and the Ledger right away.</p>
       </div>
       <div class="feature">
-        <div class="icon">📊</div>
-        <h3 lang="ja">ダッシュボード</h3>
-        <h3 lang="en">Dashboard</h3>
-        <p lang="ja">月次の収支グラフ、支出の内訳（円グラフ）、前年比グラフを一目で確認。</p>
-        <p lang="en">View monthly balance charts, expense breakdowns, and year-over-year comparisons at a glance.</p>
+        <div class="icon">🍩</div>
+        <h3 lang="ja">ホームでひと目</h3>
+        <h3 lang="en">Home at a glance</h3>
+        <p lang="ja">当月の収入・支出・収支を上部に表示。支出の内訳をドーナツグラフで示し、項目ごとの金額と割合を確認できます。</p>
+        <p lang="en">Income, expenses and balance for the month at the top, plus a donut chart of your spending with the amount and share of each category.</p>
       </div>
       <div class="feature">
-        <div class="icon">🔮</div>
-        <h3 lang="ja">月末着地予測</h3>
-        <h3 lang="en">Month-End Forecast</h3>
-        <p lang="ja">現在の支出ペースをもとに、月末の残高を自動計算します。</p>
-        <p lang="en">Automatically estimates your end-of-month balance based on your current spending pace.</p>
+        <div class="icon">📒</div>
+        <h3 lang="ja">家計簿で一覧</h3>
+        <h3 lang="en">Browse the ledger</h3>
+        <p lang="ja">日付ごとの記録を一覧表示。グループ・項目・金額・メモで絞り込めます。支出は赤、収入は緑で色分けされます。</p>
+        <p lang="en">See your records day by day, and filter them by group, category, amount or memo. Expenses are red and income is green.</p>
       </div>
       <div class="feature">
         <div class="icon">🎯</div>
-        <h3 lang="ja">予算管理</h3>
-        <h3 lang="en">Budget Management</h3>
-        <p lang="ja">月ごとの予算を設定して、使いすぎを防止します。</p>
-        <p lang="en">Set a monthly budget to keep your spending in check.</p>
+        <h3 lang="ja">やりくり</h3>
+        <h3 lang="en">Budget</h3>
+        <p lang="ja">予算を最大3件まで設定し、進捗と日ごとの支出ペースを確認。今月の実績から月末までの支出を予測した線も重ねて表示します。</p>
+        <p lang="en">Set up to three budgets and track your progress and daily spending pace, with a forecast line projected from this month's actual spending.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📈</div>
+        <h3 lang="ja">ふりかえる</h3>
+        <h3 lang="en">History</h3>
+        <p lang="ja">直近12か月の収支の推移を棒グラフで、項目別の内訳を折れ線で表示します。</p>
+        <p lang="en">A bar chart of your balance over the last 12 months, with a category breakdown shown as lines.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📊</div>
+        <h3 lang="ja">くらべる</h3>
+        <h3 lang="en">Compare</h3>
+        <p lang="ja">前年の同じ月と比べて、支出がどう変わったかを表示。見たい項目だけを選んで比較できます。</p>
+        <p lang="en">See how your spending changed against the same month last year, and pick which categories to compare.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🏷️</div>
+        <h3 lang="ja">項目とグループ</h3>
+        <h3 lang="en">Categories and groups</h3>
+        <p lang="ja">項目（カテゴリ）は自由に追加・編集・並べ替えができ、グループでまとめられます。項目を削除するときは、紐づく取引の移動先を選べます。</p>
+        <p lang="en">Add, rename and reorder your own categories, and organize them into groups. When you delete a category, you choose what happens to its transactions.</p>
       </div>
       <div class="feature">
         <div class="icon">📂</div>
         <h3 lang="ja">CSV インポート / エクスポート</h3>
-        <h3 lang="en">CSV Import / Export</h3>
-        <p lang="ja">データの持ち出しや一括取り込みに対応。</p>
-        <p lang="en">Export your data or import transactions in bulk.</p>
+        <h3 lang="en">CSV import / export</h3>
+        <p lang="ja">保存先とファイル名を選んで書き出し、そのまま読み込めます。文字コードは UTF-8 と Shift_JIS を選べ、Shift_JIS なら Excel でそのまま開けます。</p>
+        <p lang="en">Export to a location and filename you choose, then import the same file back. Pick UTF-8 or Shift_JIS encoding — Shift_JIS opens directly in Excel.</p>
       </div>
       <div class="feature">
         <div class="icon">☁️</div>
-        <h3 lang="ja">クラウド同期</h3>
-        <h3 lang="en">Cloud Sync</h3>
-        <p lang="ja">安全なクラウド保存で、機種変更時もデータを引き継げます。</p>
-        <p lang="en">Secure cloud storage keeps your data safe, even when switching devices.</p>
+        <h3 lang="ja">複数の端末で使える</h3>
+        <h3 lang="en">Use it on more than one device</h3>
+        <p lang="ja">メールアドレスまたは Google アカウントでログインすると、データはクラウドに保存されます。機種変更後も同じアカウントで続けられます。</p>
+        <p lang="en">Sign in with an email address or a Google account and your data is stored in the cloud, so you can pick up where you left off on a new device.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🌐</div>
+        <h3 lang="ja">日本語と英語</h3>
+        <h3 lang="en">Japanese and English</h3>
+        <p lang="ja">表示言語と通貨（円 / ドル）を設定から切り替えられます。</p>
+        <p lang="en">Switch the display language and currency (JPY / USD) in Settings.</p>
       </div>
     </div>
   </div>
@@ -304,8 +424,29 @@
   <!-- アプリ説明 -->
   <div class="card">
     <h2>About</h2>
-    <p lang="ja">MoneyNote は、日々の収支をかんたんに記録できるシンプルな家計簿アプリです。操作性にこだわり、毎日続けやすい設計を心がけました。ダッシュボードで支出の傾向を把握し、予算機能で無駄遣いを防ぎましょう。</p>
-    <p lang="en">MoneyNote is a simple budget tracking app designed for recording your daily income and expenses with ease. Built with simplicity in mind so you can keep up with your finances every day. Use the dashboard to understand your spending habits and the budget feature to avoid overspending.</p>
+    <p lang="ja">MoneyNote は、続けやすさを重視したシンプルな家計簿アプリです。毎日の収入と支出を数タップで記録し、グラフで振り返ることができます。レシートの撮影や自動分類といった機能は持たず、「入力がすぐ終わること」と「見たい数字がすぐ出ること」に絞って作っています。</p>
+    <p lang="en">MoneyNote is a simple budgeting app built to be easy to keep up with. Record your daily income and expenses in a few taps, then review them with charts. It deliberately leaves out receipt scanning and automatic categorization, and focuses on two things instead: finishing an entry quickly, and getting to the number you want to see quickly.</p>
+  </div>
+
+  <!-- ご利用にあたって -->
+  <div class="card">
+    <h2>Before you start</h2>
+    <ul class="spec" lang="ja">
+      <li>本アプリの利用にはアカウント（メールアドレスとパスワード、または Google アカウント）の登録が必要です。</li>
+      <li>銀行口座やクレジットカードとの連携機能はありません。記録は手入力または CSV の読み込みで行います。</li>
+      <li>無料でご利用いただけます。運営費用を賄うため、アプリ内に広告を表示します。CSV の書き出しの前には、広告を1本ご視聴いただきます。</li>
+      <li>CSV の読み込みは、1回あたり最大 5,000 行までです。</li>
+      <li>アカウントはアプリ内（マイページ → 「アカウントを削除」）からいつでも削除できます。削除すると、記録したデータはすべて完全に消去されます。</li>
+      <li>対応端末は Android 7.0 以降です。iOS 版はありません。</li>
+    </ul>
+    <ul class="spec" lang="en">
+      <li>An account (an email address and password, or a Google account) is required to use this app.</li>
+      <li>There is no bank or credit card linking. Records are entered by hand or imported from CSV.</li>
+      <li>The app is free to use. To cover running costs it shows advertisements, and you watch one ad before a CSV export.</li>
+      <li>A CSV import is limited to 5,000 rows at a time.</li>
+      <li>You can delete your account at any time from My Page → "Delete Account". Deleting it permanently removes all of your recorded data.</li>
+      <li>Requires Android 7.0 or later. There is no iOS version.</li>
+    </ul>
   </div>
 
   <!-- 法的文書 -->
@@ -327,8 +468,8 @@
     <p lang="ja">ご質問・ご意見は下記までお気軽にどうぞ。</p>
     <p lang="en">For questions or feedback, feel free to reach out.</p>
     <p>
-      <a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】アプリHPよりお問い合わせ" lang="ja" style="color:#4CAF50;font-weight:600;">hiro.studio.support@gmail.com</a>
-      <a href="mailto:hiro.studio.support@gmail.com?subject=[MoneyNote]%20Inquiry%20from%20App%20HP" lang="en" style="color:#4CAF50;font-weight:600;">hiro.studio.support@gmail.com</a>
+      <a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】アプリHPよりお問い合わせ" lang="ja" style="color:#059669;font-weight:600;">hiro.studio.support@gmail.com</a>
+      <a href="mailto:hiro.studio.support@gmail.com?subject=[MoneyNote]%20Inquiry%20from%20App%20HP" lang="en" style="color:#059669;font-weight:600;">hiro.studio.support@gmail.com</a>
     </p>
   </div>
 
