@@ -116,10 +116,11 @@
       <li><strong>アプリ設定</strong>: 表示言語・通貨・CSVの文字コードなどの設定値（端末内および Supabase に保存）</li>
       <li><strong>広告用識別子</strong>: 広告ID（Android 広告 ID）等（次項の広告配信目的）</li>
       <li><strong>アプリのバージョン情報</strong>: 端末にインストールされている本アプリのバージョン（第4項のアプリ更新確認の目的で、Google Play に照会する際に使用）</li>
-      <li><strong>定期購入の状態</strong>: 広告オフの定期購入が有効かどうか。Google Play から端末上で確認するだけで、本サービス提供者のサーバーには送信しません。カード番号などの決済情報は Google Play が取り扱い、本サービス提供者は取得しません</li>
+      <li><strong>定期購入の状態</strong>: 広告オフの定期購入が有効かどうか。Google Play から端末上で確認し、確認した状態（購読中、解約済み、支払いの停止中など）を第5項の利用状況の記録として Supabase に保存します。カード番号などの決済情報は Google Play が取り扱い、本サービス提供者は取得しません</li>
       <li><strong>広告オフの付与</strong>: 本サービス提供者が特定のユーザーに広告オフを付与した場合に限り、そのアカウントと付与した機能の情報を Supabase に保存します</li>
+      <li><strong>利用状況の記録</strong>: 開いた画面と滞在時間、広告の表示・クリック、広告オフの購入などの操作（第5項参照）</li>
     </ul>
-    <p>本アプリは、アプリの利用状況の解析やクラッシュログの収集を行っていません。また、連絡先、位置情報、写真、通話履歴、端末内のファイル一覧などの情報は取得しません。</p>
+    <p>本アプリは、クラッシュログの収集を行っていません。また、連絡先、位置情報、写真、通話履歴、端末内のファイル一覧などの情報は取得しません。</p>
 
     <h2>2. 広告配信と、広告オフ（定期購入）について</h2>
     <p>本アプリでは、広告配信を目的として <strong>Google AdMob</strong> を利用しています。本アプリは<strong>パーソナライズされていない広告（非パーソナライズ広告）のみ</strong>をリクエストする設定で配信しています。ただし Google AdMob は、広告の配信、不正防止、および効果測定のために、ユーザーを識別するための情報（広告ID等）を自動的に収集する場合があります。情報の取り扱いについては、Googleのプライバシーポリシーをご確認ください。</p>
@@ -130,7 +131,7 @@
       <li><strong>リワード広告（動画）</strong>: CSV の書き出しを行う前に表示されます。<strong>再生の前に確認のダイアログを表示し、同意をいただいた場合にのみ再生します</strong>。同意しない場合、広告は再生されず、CSV の書き出しも行われません。</li>
     </ul>
     <p>広告の表示にあたり、本サービス提供者が家計簿データ（収入・支出の金額、項目、メモ等）を広告事業者に提供することはありません。</p>
-    <p><strong>広告オフ（定期購入）</strong>: マイページの「広告オフ」から、有料の定期購入（月額100円）を申し込むと、上記の広告はすべて表示されなくなります。購入・更新・解約・返金は Google Play が処理します。本アプリは、購読が有効かどうかを Google Play から端末上で確認するだけで、購入履歴、注文番号、購入トークン、カード番号などの決済情報を取得・保存することはありません。</p>
+    <p><strong>広告オフ（定期購入）</strong>: マイページの「広告オフ」から、有料の定期購入（月額100円）を申し込むと、上記の広告はすべて表示されなくなります。購入・更新・解約・返金は Google Play が処理します。本アプリは、購読が有効かどうかを Google Play から端末上で確認します。注文番号、購入トークン、カード番号などの決済情報を取得・保存することはありません。なお、購読の状態と、購入・購入の復元・定期購入の管理の操作の結果は、第5項の利用状況の記録として保存します。</p>
     <ul>
       <li><a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener noreferrer">Google ポリシーと規約（広告）</a></li>
     </ul>
@@ -152,20 +153,32 @@
     <h2>4. アプリの更新確認について</h2>
     <p>本アプリは起動時に、新しいバージョンが Google Play で公開されていないかを確認し、公開されていれば Google 純正の更新シートを表示します。確認とダウンロードは Google Play が行い、この際に端末にインストールされている本アプリのバージョン情報が Google Play に送信されます。本サービス提供者がこの情報を取得・保存することはありません。この機能は、Google Play 経由でインストールされた場合にのみ動作します。</p>
 
-    <h2>5. 取得方法</h2>
-    <p>ユーザー入力またはアプリ利用に伴う自動収集（広告モジュール等）により取得します。Google アカウントによるログインを選択した場合は、第3項に記載の情報を Google から取得します。</p>
+    <h2>5. 利用状況の記録について</h2>
+    <p>本アプリは、使われ方を把握してアプリを改善するために、ログイン後の操作の一部を記録し、Supabase に保存します。記録する内容は以下のとおりです。</p>
+    <ul>
+      <li><strong>画面の表示</strong>: 開いた画面と、その画面を表示していた時間。アプリをバックグラウンドに移したこと・戻したことも含みます</li>
+      <li><strong>広告</strong>: 広告が表示されたこと、クリックされたこと、リワード広告を最後まで視聴したこと。あわせて、広告の種類と、表示されたときの画面を記録します</li>
+      <li><strong>広告オフ（定期購入）</strong>: 購入・購入の復元・定期購入の管理の操作と、その結果（購入の完了、支払いの確認待ち、キャンセル、エラーなど）。また、広告オフの状態（購読中、解約済み、支払いの停止中、付与、なし）と、その変化</li>
+    </ul>
+    <p>それぞれの記録には、記録した日時、アプリのバージョン、アプリの起動時などに作るランダムな識別子（セッションID）を付けます。記録はアカウントに紐づけて保存します。</p>
+    <p>家計簿データ（収入・支出の金額、カテゴリ、タグ、メモ等）、入力した文字、広告ID、購入トークン・注文番号・カード番号などの決済情報は記録しません。記録した内容を広告の配信に使ったり、第三者に提供したりすることはありません。</p>
+    <p>記録は、アカウントを削除するとほかのデータとあわせて削除されます。</p>
 
-    <h2>6. 利用目的</h2>
+    <h2>6. 取得方法</h2>
+    <p>ユーザー入力またはアプリ利用に伴う自動収集（広告モジュール、第5項の利用状況の記録等）により取得します。Google アカウントによるログインを選択した場合は、第3項に記載の情報を Google から取得します。</p>
+
+    <h2>7. 利用目的</h2>
     <ul>
       <li>本アプリの提供・維持</li>
       <li>クラウド機能によるデータ同期・バックアップ（Supabase利用）</li>
       <li>広告の配信</li>
       <li>広告オフ（定期購入）の提供と、購読状態の確認</li>
       <li>アプリの更新確認</li>
+      <li>利用状況の分析によるアプリの改善</li>
       <li>お問い合わせ対応</li>
     </ul>
 
-    <h2>7. データ保存と管理</h2>
+    <h2>8. データ保存と管理</h2>
     <p>取得した情報は <strong>Supabase</strong> を利用し、安全に管理されます。通信はすべて暗号化（HTTPS）されています。</p>
     <p>上記に加えて、以下の情報が端末内にも保存されます。いずれもアプリをアンインストールすると削除されます。</p>
     <ul>
@@ -178,25 +191,25 @@
     <p>また、CSVのインポート / エクスポート機能を利用する際に、端末のストレージへアクセスします。読み込み・書き出しの対象はユーザーが選択したファイルに限られ、その内容が本サービス提供者に送信されることはありません。</p>
     <p><strong>保存期間</strong>: アカウントが削除されるまで保存されます。保持期間を設けた自動削除は行っていません。</p>
 
-    <h2>8. 第三者提供</h2>
+    <h2>9. 第三者提供</h2>
     <p>法令に基づく場合を除き、第三者提供は行いません。</p>
 
-    <h2 id="data-deletion">9. データの削除について</h2>
+    <h2 id="data-deletion">10. データの削除について</h2>
     <p>ユーザーは以下の方法でデータを削除できます。</p>
     <ul>
       <li><strong>個別データの削除</strong>: アプリ内の記帳一覧画面から、各取引データを個別に削除できます。</li>
       <li><strong>全データの一括削除</strong>: アプリ内のインポート / エクスポート画面から、すべての取引データを一括削除できます。</li>
-      <li><strong>アカウントの削除</strong>: アプリ内の <strong>マイページ → 「アカウントを削除」</strong> から削除できます。確認欄に「アカウントを削除します」と入力し、「完全に削除する」を選択すると実行されます。アカウントを削除すると、メールアドレス・パスワード、Google アカウントとの連携情報、取引データ、カテゴリ、タグ、予算設定、アプリ設定、広告オフの付与情報のすべてが完全に消去され、復元できません。</li>
+      <li><strong>アカウントの削除</strong>: アプリ内の <strong>マイページ → 「アカウントを削除」</strong> から削除できます。確認欄に「アカウントを削除します」と入力し、「完全に削除する」を選択すると実行されます。アカウントを削除すると、メールアドレス・パスワード、Google アカウントとの連携情報、取引データ、カテゴリ、タグ、予算設定、アプリ設定、広告オフの付与情報、利用状況の記録のすべてが完全に消去され、復元できません。</li>
     </ul>
     <p>なお、Google Play の定期購入は、アカウントを削除しても自動では解約されません。解約は Google Play の「定期購入」から行ってください。</p>
     <p>アプリを利用できない場合は、ウェブから削除を依頼することもできます。手順は <a href="delete-account.html">アカウント・データの削除について</a> をご覧ください。</p>
 
-    <h2>10. お問い合わせ</h2>
+    <h2>11. お問い合わせ</h2>
     <p><a href="mailto:hiro.studio.support@gmail.com?subject=【MoneyNote】プライバシーポリシーよりお問い合わせ">hiro.studio.support@gmail.com</a></p>
 
-    <h2>11. 改定</h2>
+    <h2>12. 改定</h2>
     <p>必要に応じて本ポリシーを改定し、本ページにて公表します。</p>
-    <p>最終更新日: 2026年10月20日</p>
+    <p>最終更新日: 2026年10月21日</p>
   </div>
 
   <div lang="en">
@@ -210,10 +223,11 @@
       <li><strong>App Settings</strong>: Settings such as display language, currency and CSV encoding (stored on your device and in Supabase)</li>
       <li><strong>Advertising Identifiers</strong>: Advertising ID (Android Advertising ID), etc. (for advertising purposes described below)</li>
       <li><strong>App version</strong>: The version of this App installed on your device (used when checking Google Play for updates, as described in Section 4)</li>
-      <li><strong>Subscription status</strong>: Whether an Ad-free subscription is active. The App only checks this on your device through Google Play and does not send it to the Service Provider's servers. Payment information such as card numbers is handled by Google Play, and the Service Provider does not obtain it</li>
+      <li><strong>Subscription status</strong>: Whether an Ad-free subscription is active. The App checks this on your device through Google Play, and stores the status it finds (active, canceled, on hold because of a payment problem, and so on) in Supabase as part of the usage records described in Section 5. Payment information such as card numbers is handled by Google Play, and the Service Provider does not obtain it</li>
       <li><strong>Ad-free grants</strong>: Only when the Service Provider grants Ad-free to a specific user, information about that account and the granted feature is stored in Supabase</li>
+      <li><strong>Usage records</strong>: The screens you open and how long you stay on them, ad impressions and clicks, and actions such as purchasing Ad-free (see Section 5)</li>
     </ul>
-    <p>This App does not collect usage analytics or crash logs. It also does not collect your contacts, location, photos, call history, or a list of the files on your device.</p>
+    <p>This App does not collect crash logs. It also does not collect your contacts, location, photos, call history, or a list of the files on your device.</p>
 
     <h2>2. Advertising and the Ad-free Subscription</h2>
     <p>This App uses <strong>Google AdMob</strong> for the purpose of delivering advertisements. This App is configured to request <strong>non-personalized ads only</strong>. However, Google AdMob may automatically collect information to identify users (such as advertising IDs) for ad delivery, fraud prevention, and performance measurement. Please refer to Google's Privacy Policy regarding the handling of this information.</p>
@@ -224,7 +238,7 @@
       <li><strong>Rewarded (video) ads</strong>: Shown before a CSV export. <strong>A confirmation dialog is shown first, and the ad plays only if you agree to it.</strong> If you do not agree, no ad is played and the CSV is not exported.</li>
     </ul>
     <p>The Service Provider does not provide your household account data (amounts, categories, notes, and so on) to advertising providers.</p>
-    <p><strong>Ad-free (subscription)</strong>: If you subscribe to Ad-free (¥100 per month) from "Ad-free" in My Page, none of the ads above are shown. Purchases, renewals, cancellations and refunds are handled by Google Play. The App only checks on your device, through Google Play, whether your subscription is active. The Service Provider does not obtain or store your purchase history, order numbers, purchase tokens, or payment information such as card numbers.</p>
+    <p><strong>Ad-free (subscription)</strong>: If you subscribe to Ad-free (¥100 per month) from "Ad-free" in My Page, none of the ads above are shown. Purchases, renewals, cancellations and refunds are handled by Google Play. The App checks on your device, through Google Play, whether your subscription is active. The Service Provider does not obtain or store order numbers, purchase tokens, or payment information such as card numbers. The subscription status and the results of purchasing, restoring purchases and opening subscription management are stored as usage records, as described in Section 5.</p>
     <ul>
       <li><a href="https://policies.google.com/technologies/ads?hl=en" target="_blank" rel="noopener noreferrer">Google Policies & Terms (Advertising)</a></li>
     </ul>
@@ -246,20 +260,32 @@
     <h2>4. Checking for App Updates</h2>
     <p>On launch, this App checks whether a newer version has been published on Google Play, and if so, shows Google's own update sheet. The check and the download are carried out by Google Play, and the version of this App installed on your device is sent to Google Play as part of that check. The Service Provider neither obtains nor stores this information. This feature only works when the App was installed through Google Play.</p>
 
-    <h2>5. Collection Methods</h2>
-    <p>Information is obtained through user input or automatic collection associated with the use of the App (such as advertising modules). If you choose to sign in with a Google account, the information described in Section 3 is obtained from Google.</p>
+    <h2>5. Usage Records</h2>
+    <p>To understand how the App is used and to improve it, the App records some of your actions after you sign in and stores them in Supabase. The following is recorded:</p>
+    <ul>
+      <li><strong>Screens</strong>: The screens you open and how long each one is shown, including when the App moves to the background and back</li>
+      <li><strong>Ads</strong>: When an ad is shown, when it is clicked, and when you finish watching a rewarded ad, along with the type of ad and the screen it appeared on</li>
+      <li><strong>Ad-free (subscription)</strong>: Purchasing, restoring purchases and opening subscription management, with their results (purchase completed, payment pending, canceled, error, and so on), and the Ad-free status (active, canceled, on hold because of a payment problem, granted, or none) and its changes</li>
+    </ul>
+    <p>Each record includes the date and time, the App version, and a random identifier created when the App starts and at similar points (a session ID). Records are stored linked to your account.</p>
+    <p>The App does not record your household account data (amounts, categories, tags, notes, and so on), the text you type, your advertising ID, or purchase tokens, order numbers, or payment information such as card numbers. Records are not used for delivering ads and are not provided to third parties.</p>
+    <p>Records are deleted together with your other data when you delete your account.</p>
 
-    <h2>6. Purpose of Use</h2>
+    <h2>6. Collection Methods</h2>
+    <p>Information is obtained through user input or automatic collection associated with the use of the App (such as advertising modules and the usage records described in Section 5). If you choose to sign in with a Google account, the information described in Section 3 is obtained from Google.</p>
+
+    <h2>7. Purpose of Use</h2>
     <ul>
       <li>Provision and maintenance of this App</li>
       <li>Data synchronization and backup via cloud features (using Supabase)</li>
       <li>Delivery of advertisements</li>
       <li>Providing the Ad-free subscription and checking its status</li>
       <li>Checking for app updates</li>
+      <li>Analyzing usage to improve the App</li>
       <li>Responding to inquiries</li>
     </ul>
 
-    <h2>7. Data Storage and Management</h2>
+    <h2>8. Data Storage and Management</h2>
     <p>The collected information is securely managed using <strong>Supabase</strong>. All communication is encrypted (HTTPS).</p>
     <p>In addition to the above, the following is stored on your device. All of it is removed when you uninstall the App.</p>
     <ul>
@@ -272,25 +298,25 @@
     <p>In addition, the App accesses your device storage when you use the CSV import / export feature. Only the file you select is read or written, and its contents are never transmitted to the Service Provider.</p>
     <p><strong>Retention period</strong>: Data is retained until your account is deleted. We do not perform automatic deletion after a fixed retention period.</p>
 
-    <h2>8. Provision to Third Parties</h2>
+    <h2>9. Provision to Third Parties</h2>
     <p>We will not provide your information to third parties unless required by law.</p>
 
-    <h2 id="data-deletion-en">9. Data Deletion</h2>
+    <h2 id="data-deletion-en">10. Data Deletion</h2>
     <p>Users can delete their data in the following ways:</p>
     <ul>
       <li><strong>Delete individual transactions</strong>: Each transaction can be deleted individually from the transaction list screen within the app.</li>
       <li><strong>Delete all data at once</strong>: All transaction data can be deleted in bulk from the Import / Export screen within the app.</li>
-      <li><strong>Delete account</strong>: You can delete your account from <strong>My Page → "Delete Account"</strong> within the app. Type "delete my account" in the confirmation field and select "Permanently Delete" to proceed. Deleting your account permanently removes your email address, password, Google account link information, transactions, categories, tags, budget settings, app settings, and Ad-free grant records. This action cannot be undone.</li>
+      <li><strong>Delete account</strong>: You can delete your account from <strong>My Page → "Delete Account"</strong> within the app. Type "delete my account" in the confirmation field and select "Permanently Delete" to proceed. Deleting your account permanently removes your email address, password, Google account link information, transactions, categories, tags, budget settings, app settings, Ad-free grant records, and usage records. This action cannot be undone.</li>
     </ul>
     <p>Note that deleting your account does not cancel a Google Play subscription automatically. Please cancel it under Subscriptions in Google Play.</p>
     <p>If you are unable to use the app, you can also request deletion via the web. See <a href="delete-account.html">Account and Data Deletion</a> for details.</p>
 
-    <h2>10. Contact Us</h2>
+    <h2>11. Contact Us</h2>
     <p><a href="mailto:hiro.studio.support@gmail.com?subject=[MoneyNote]%20Inquiry%20from%20Privacy%20Policy">hiro.studio.support@gmail.com</a></p>
 
-    <h2>11. Revisions</h2>
+    <h2>12. Revisions</h2>
     <p>We will revise this policy as necessary and publish the updates on this page.</p>
-    <p>Last updated: October 20, 2026</p>
+    <p>Last updated: October 21, 2026</p>
   </div>
 </body>
 </html>
